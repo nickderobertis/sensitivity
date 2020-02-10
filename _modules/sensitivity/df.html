@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.df &mdash; sensitivity 0.1.0 documentation</title>
+  <title>sensitivity.df &mdash; sensitivity 0.1.1 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -163,10 +163,11 @@
            <div itemprop="articleBody">
             
   <h1>Source code for sensitivity.df</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pd_utils</span>
 <span class="kn">from</span> <span class="nn">pandas.io.formats.style</span> <span class="kn">import</span> <span class="n">Styler</span>
 
 <span class="kn">from</span> <span class="nn">sensitivity.colors</span> <span class="kn">import</span> <span class="n">_get_color_map</span>
@@ -198,13 +199,37 @@
         <span class="n">base_param_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">result_name</span><span class="p">:</span> <span class="n">result</span><span class="p">})</span>
         <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">base_param_dict</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">df</span></div>
 
 
-<span class="k">def</span> <span class="nf">_style_sensitivity_df</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">reverse_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Styler</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">_two_variable_sensitivity_display_df</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">col1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">col2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                                         <span class="n">result_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Result&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">selected_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">result_col</span><span class="p">]]</span>
+    <span class="n">wide_df</span> <span class="o">=</span> <span class="n">pd_utils</span><span class="o">.</span><span class="n">long_to_wide</span><span class="p">(</span>
+        <span class="n">selected_df</span><span class="p">,</span>
+        <span class="n">col1</span><span class="p">,</span>
+        <span class="n">result_col</span><span class="p">,</span>
+        <span class="n">colindex</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span>
+        <span class="n">colindex_only</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">col1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wide_df</span>
+
+
+<span class="k">def</span> <span class="nf">_style_sensitivity_df</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">col1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">col2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">result_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Result&#39;</span><span class="p">,</span>
+                          <span class="n">reverse_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                          <span class="n">col_subset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Styler</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">col2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">caption</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{result_col}</span><span class="s1"> - </span><span class="si">{col1}</span><span class="s1"> vs. </span><span class="si">{col2}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">caption</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{result_col}</span><span class="s1"> vs. </span><span class="si">{col1}</span><span class="s1">&#39;</span>
+
     <span class="n">color_str</span> <span class="o">=</span> <span class="n">_get_color_map</span><span class="p">(</span><span class="n">reverse_colors</span><span class="o">=</span><span class="n">reverse_colors</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">color_str</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">color_str</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">col_subset</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="n">caption</span><span class="p">)</span>
 
 </pre></div>
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.main &mdash; sensitivity 0.1.0 documentation</title>
+  <title>sensitivity.main &mdash; sensitivity 0.1.1 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.1.1
               </div>
             
           
@@ -163,13 +163,15 @@
            <div itemprop="articleBody">
             
   <h1>Source code for sensitivity.main</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span>
+<span></span><span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pandas.io.formats.style</span> <span class="kn">import</span> <span class="n">Styler</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">sensitivity.df</span> <span class="kn">import</span> <span class="n">sensitivity_df</span><span class="p">,</span> <span class="n">_style_sensitivity_df</span>
+<span class="kn">from</span> <span class="nn">sensitivity.df</span> <span class="kn">import</span> <span class="n">sensitivity_df</span><span class="p">,</span> <span class="n">_style_sensitivity_df</span><span class="p">,</span> <span class="n">_two_variable_sensitivity_display_df</span>
 <span class="kn">from</span> <span class="nn">sensitivity.hexbin</span> <span class="kn">import</span> <span class="n">sensitivity_hex_plots</span><span class="p">,</span> <span class="n">_hex_figure_from_sensitivity_df</span>
 
 
@@ -217,7 +219,7 @@
 <span class="sd">        &gt;&gt;&gt; sa.df</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; # Styled DataFrame</span>
-<span class="sd">        &gt;&gt;&gt; sa.styled_df</span>
+<span class="sd">        &gt;&gt;&gt; sa.styled_dfs</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; # Hex-Bin Plot</span>
 <span class="sd">        &gt;&gt;&gt; sa.plot</span>
@@ -254,11 +256,53 @@
         <span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">styled_df</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">_style_sensitivity_df</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
-            <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span>
-        <span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">styled_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Styler</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Styler</span><span class="p">]]:</span>
+        <span class="c1"># Output a single Styler if only one or two variables</span>
+        <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_values</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_style_sensitivity_df</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
+                <span class="n">sensitivity_cols</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
+                <span class="n">col_subset</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">],</span>
+                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">col1</span> <span class="o">=</span> <span class="n">sensitivity_cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">col2</span> <span class="o">=</span> <span class="n">sensitivity_cols</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">_two_variable_sensitivity_display_df</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
+                <span class="n">col1</span><span class="p">,</span>
+                <span class="n">col2</span><span class="p">,</span>
+                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">_style_sensitivity_df</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">,</span>
+                <span class="n">col1</span><span class="p">,</span>
+                <span class="n">col2</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span>
+                <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
+                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;must pass sensitivity columns&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Length must be greater than 2, need to output multiple, one for each pair of variables</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">_two_variable_sensitivity_display_df</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
+                <span class="n">col1</span><span class="p">,</span>
+                <span class="n">col2</span><span class="p">,</span>
+                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span>
+            <span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_style_sensitivity_df</span><span class="p">(</span>
+                <span class="n">df</span><span class="p">,</span>
+                <span class="n">col1</span><span class="p">,</span>
+                <span class="n">col2</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span>
+                <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
+                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
+            <span class="p">))</span>
+        <span class="k">return</span> <span class="n">results</span></div>
 </pre></div>
 
            </div>
