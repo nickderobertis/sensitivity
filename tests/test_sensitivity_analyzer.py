@@ -23,9 +23,9 @@ class TestSensitivityAnalyzer:
         sa = self.create_sa()
         assert_frame_equal(sa.df, EXPECT_DF, check_dtype=False)
 
-    def test_create_styled_df(self):
+    def test_create_styled_dfs(self):
         sa = self.create_sa()
-        sa.styled_df
+        sa.styled_dfs
         # TODO [#1]: determine how to test pandas Styler object beyond creation without error
 
     def test_create_plot(self):
