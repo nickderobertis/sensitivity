@@ -54,7 +54,7 @@ class SensitivityAnalyzer:
         >>> sa.df
         >>>
         >>> # Styled DataFrame
-        >>> sa.styled_df
+        >>> sa.styled_dfs
         >>>
         >>> # Hex-Bin Plot
         >>> sa.plot
