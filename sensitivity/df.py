@@ -1,7 +1,8 @@
-from typing import Dict, Any, Callable
+from typing import Dict, Any, Callable, Sequence, Optional
 import itertools
 from copy import deepcopy
 import pandas as pd
+import pd_utils
 from pandas.io.formats.style import Styler
 
 from sensitivity.colors import _get_color_map
@@ -38,7 +39,30 @@ def sensitivity_df(sensitivity_values: Dict[str, Any], func: Callable,
     return df
 
 
-def _style_sensitivity_df(df: pd.DataFrame, reverse_colors: bool = False) -> Styler:
+def _two_variable_sensitivity_display_df(df: pd.DataFrame, col1: str, col2: str,
+                                         result_col: str = 'Result') -> pd.DataFrame:
+    selected_df = df[[col1, col2, result_col]]
+    wide_df = pd_utils.long_to_wide(
+        selected_df,
+        col1,
+        result_col,
+        colindex=col2,
+        colindex_only=True
+    ).set_index(col1)
+
+    return wide_df
+
+
+def _style_sensitivity_df(df: pd.DataFrame, col1: str, col2: Optional[str] = None, result_col: str = 'Result',
+                          reverse_colors: bool = False,
+                          col_subset: Optional[Sequence[str]] = None) -> Styler:
+    if col2 is not None:
+        caption = f'{result_col} - {col1} vs. {col2}'
+    else:
+        caption = f'{result_col} vs. {col1}'
+
     color_str = _get_color_map(reverse_colors=reverse_colors)
-    return df.style.background_gradient(cmap=color_str)
+    return df.style.background_gradient(
+        cmap=color_str, subset=col_subset, axis=None
+    ).set_caption(caption)
 

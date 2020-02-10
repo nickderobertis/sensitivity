@@ -1,10 +1,12 @@
+import itertools
 from dataclasses import dataclass
-from typing import Dict, Any, Callable, Optional
+from typing import Dict, Any, Callable, Optional, List, Union
 
 import numpy as np
+from pandas.io.formats.style import Styler
 import matplotlib.pyplot as plt
 
-from sensitivity.df import sensitivity_df, _style_sensitivity_df
+from sensitivity.df import sensitivity_df, _style_sensitivity_df, _two_variable_sensitivity_display_df
 from sensitivity.hexbin import sensitivity_hex_plots, _hex_figure_from_sensitivity_df
 
 
@@ -89,8 +91,50 @@ class SensitivityAnalyzer:
         )
 
     @property
-    def styled_df(self):
-        return _style_sensitivity_df(
-            self.df,
-            reverse_colors=self.reverse_colors
-        )
+    def styled_dfs(self) -> Union[Styler, List[Styler]]:
+        # Output a single Styler if only one or two variables
+        sensitivity_cols = list(self.sensitivity_values.keys())
+        if len(sensitivity_cols) == 1:
+            return _style_sensitivity_df(
+                self.df,
+                sensitivity_cols[0],
+                reverse_colors=self.reverse_colors,
+                col_subset=[self.result_name],
+                result_col=self.result_name
+            )
+        elif len(sensitivity_cols) == 2:
+            col1 = sensitivity_cols[0]
+            col2 = sensitivity_cols[1]
+            df = _two_variable_sensitivity_display_df(
+                self.df,
+                col1,
+                col2,
+                result_col=self.result_name
+            )
+            return _style_sensitivity_df(
+                df,
+                col1,
+                col2=col2,
+                reverse_colors=self.reverse_colors,
+                result_col=self.result_name,
+            )
+        elif len(sensitivity_cols) == 0:
+            raise ValueError('must pass sensitivity columns')
+
+        # Length must be greater than 2, need to output multiple, one for each pair of variables
+        results = []
+        for col1, col2 in itertools.combinations(sensitivity_cols, 2):
+            df = _two_variable_sensitivity_display_df(
+                self.df,
+                col1,
+                col2,
+                result_col=self.result_name
+            )
+            results.append(_style_sensitivity_df(
+                df,
+                col1,
+                col2=col2,
+                reverse_colors=self.reverse_colors,
+                result_col=self.result_name,
+            ))
+        return results
