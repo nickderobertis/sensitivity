@@ -26,9 +26,9 @@ class TestSensitivityAnalyzer:
     def test_create_styled_df(self):
         sa = self.create_sa()
         sa.styled_df
-        # TODO [$5e41cfbc0f42cc00073f470c]: determine how to test pandas Styler object beyond creation without error
+        # TODO [#1]: determine how to test pandas Styler object beyond creation without error
 
     def test_create_plot(self):
         sa = self.create_sa()
         sa.plot
-        # TODO [$5e41cfbc0f42cc00073f470d]: determine how to test matplotlib figures beyond creation without error
+        # TODO [#2]: determine how to test matplotlib figures beyond creation without error
