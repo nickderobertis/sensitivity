@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 import numpy as np
 
+from sensitivity.colors import _get_color_map
 from sensitivity.df import sensitivity_df
 
 
@@ -47,7 +48,6 @@ def sensitivity_hex_plots(sensitivity_values: Dict[str, Any], func: Callable,
     )
 
 
-
 def _hex_figure_from_sensitivity_df(df: pd.DataFrame, sensitivity_cols: Sequence[str],
                                     result_name: str = 'Result', agg_func: Callable = np.mean,
                                     reverse_colors: bool = False, grid_size: int = 8) -> plt.Figure:
@@ -70,10 +70,3 @@ def _hex_figure_from_sensitivity_df(df: pd.DataFrame, sensitivity_cols: Sequence
         cb.set_label(result_name)
     fig.tight_layout()
     return fig
-
-
-def _get_color_map(reverse_colors: bool = False) -> str:
-    color_map = 'RdYlGn'
-    if reverse_colors:
-        color_map += '_r'
-    return color_map
