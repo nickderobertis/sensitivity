@@ -61,6 +61,7 @@ PACKAGE_INSTALL_REQUIRES = [
     # 'otherpackage>=1,<2'
     'pandas',
     'matplotlib',
+    'pd_utils',
 ]
 
 # Add any third party packages you use in requirements for optional features of your package here
