@@ -2,30 +2,14 @@ import pandas as pd
 from pandas.testing import assert_frame_equal
 
 from sensitivity.df import sensitivity_df
-
-
-def add_5_to_values(value1, value2):
-    return value1 + value2 + 5
+from tests.base import EXPECT_DF, SENSITIVITY_VALUES, add_5_to_values, RESULT_NAME
 
 
 def test_create_sensitivity_df():
-    expect_df = pd.DataFrame(
-        [
-            (1, 4, 10),
-            (1, 5, 11),
-            (2, 4, 11),
-            (2, 5, 12),
-        ],
-        columns=['value1', 'value2', 'my_res']
-    )
-
     df = sensitivity_df(
-        {
-            'value1': [1, 2,],
-            'value2': [4, 5,],
-        },
+        SENSITIVITY_VALUES,
         add_5_to_values,
-        result_name='my_res'
+        result_name=RESULT_NAME
     )
 
-    assert_frame_equal(df, expect_df, check_dtype=False)
+    assert_frame_equal(df, EXPECT_DF, check_dtype=False)
