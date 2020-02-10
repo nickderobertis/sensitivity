@@ -1,0 +1,43 @@
+sensitivity package
+===================
+
+.. automodule:: sensitivity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+sensitivity.colors module
+-------------------------
+
+.. automodule:: sensitivity.colors
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sensitivity.df module
+---------------------
+
+.. automodule:: sensitivity.df
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sensitivity.hexbin module
+-------------------------
+
+.. automodule:: sensitivity.hexbin
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+sensitivity.main module
+-----------------------
+
+.. automodule:: sensitivity.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
