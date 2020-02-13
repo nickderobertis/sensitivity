@@ -1,4 +1,4 @@
-This is my gallery
+Example Usage
 ==================
 
-Below is a gallery of examples
+See below for some examples of usage.
