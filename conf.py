@@ -17,7 +17,7 @@ REPO_MAINTAINERS = [
 ]
 
 # Package version in the format (major, minor, release)
-PACKAGE_VERSION_TUPLE = (0, 1, 1)
+PACKAGE_VERSION_TUPLE = (0, 2, 0)
 
 # Short description of the package
 PACKAGE_SHORT_DESCRIPTION = "Python Sensitivity Analysis - Gradient DataFrames and Hex-Bin Plots"
@@ -59,7 +59,7 @@ PACKAGE_INSTALL_REQUIRES = [
     # e.g.
     # 'package',
     # 'otherpackage>=1,<2'
-    'pandas',
+    'pandas>=1',
     'matplotlib',
     'pd_utils',
     'IPython',

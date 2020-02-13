@@ -80,8 +80,13 @@ class SensitivityAnalyzer:
         )
 
     def plot(self, **kwargs) -> plt.Figure:
+        """
+        Creates hex-bin plots of the sensitivity analysis results
+
+        :param kwargs: agg_func, reverse_colors, grid_size (see :py:class:`.SensitivityAnalyzer`)
+        :return: Matplotlib Figure containing one or more plots of sensitivity analysis results
+        """
         config_dict: Dict[str, Any] = dict(
-            result_name=self.result_name,
             agg_func=self.agg_func,
             reverse_colors=self.reverse_colors,
             grid_size=self.grid_size
@@ -91,10 +96,18 @@ class SensitivityAnalyzer:
         return _hex_figure_from_sensitivity_df(
             self.df,
             sensitivity_cols,
+            result_name=self.result_name,
             **config_dict
         )
 
     def styled_dfs(self, disp: bool = True, **kwargs) -> Union[Styler, Dict[Sequence[str], Styler]]:
+        """
+        Creates Pandas Styler objects showing a gradient over the sensitivity results
+
+        :param disp: Whether to display the Styler objects before returning
+        :param kwargs: reverse_colors, agg_func (see :py:class:`.SensitivityAnalyzer`)
+        :return:
+        """
         output = {}
         config_dict: Dict[str, Any] = dict(
             reverse_colors=self.reverse_colors,
