@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.main &mdash; sensitivity 0.1.1 documentation</title>
+  <title>sensitivity.main &mdash; sensitivity 0.2.0 documentation</title>
   
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                0.1.1
+                0.2.0
               </div>
             
           
@@ -165,11 +165,12 @@
   <h1>Source code for sensitivity.main</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Sequence</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">pandas.io.formats.style</span> <span class="kn">import</span> <span class="n">Styler</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 
 <span class="kn">from</span> <span class="nn">sensitivity.df</span> <span class="kn">import</span> <span class="n">sensitivity_df</span><span class="p">,</span> <span class="n">_style_sensitivity_df</span><span class="p">,</span> <span class="n">_two_variable_sensitivity_display_df</span>
 <span class="kn">from</span> <span class="nn">sensitivity.hexbin</span> <span class="kn">import</span> <span class="n">sensitivity_hex_plots</span><span class="p">,</span> <span class="n">_hex_figure_from_sensitivity_df</span>
@@ -219,10 +220,10 @@
 <span class="sd">        &gt;&gt;&gt; sa.df</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; # Styled DataFrame</span>
-<span class="sd">        &gt;&gt;&gt; sa.styled_dfs</span>
+<span class="sd">        &gt;&gt;&gt; sa.styled_dfs()</span>
 <span class="sd">        &gt;&gt;&gt;</span>
 <span class="sd">        &gt;&gt;&gt; # Hex-Bin Plot</span>
-<span class="sd">        &gt;&gt;&gt; sa.plot</span>
+<span class="sd">        &gt;&gt;&gt; sa.plot()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sensitivity_values</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
     <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span>
@@ -243,27 +244,48 @@
             <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">func_kwargs_dict</span>
         <span class="p">)</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
+<div class="viewcode-block" id="SensitivityAnalyzer.plot"><a class="viewcode-back" href="../../api/sensitivity.html#sensitivity.main.SensitivityAnalyzer.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates hex-bin plots of the sensitivity analysis results</span>
+
+<span class="sd">        :param kwargs: agg_func, reverse_colors, grid_size (see :py:class:`.SensitivityAnalyzer`)</span>
+<span class="sd">        :return: Matplotlib Figure containing one or more plots of sensitivity analysis results</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">agg_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">agg_func</span><span class="p">,</span>
+            <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
+            <span class="n">grid_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span>
+        <span class="p">)</span>
+        <span class="n">config_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_values</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">_hex_figure_from_sensitivity_df</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
             <span class="n">sensitivity_cols</span><span class="p">,</span>
             <span class="n">result_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
-            <span class="n">agg_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">agg_func</span><span class="p">,</span>
-            <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
-            <span class="n">grid_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_size</span>
-        <span class="p">)</span>
+            <span class="o">**</span><span class="n">config_dict</span>
+        <span class="p">)</span></div>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">styled_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Styler</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Styler</span><span class="p">]]:</span>
+<div class="viewcode-block" id="SensitivityAnalyzer.styled_dfs"><a class="viewcode-back" href="../../api/sensitivity.html#sensitivity.main.SensitivityAnalyzer.styled_dfs">[docs]</a>    <span class="k">def</span> <span class="nf">styled_dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disp</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Styler</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Styler</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates Pandas Styler objects showing a gradient over the sensitivity results</span>
+
+<span class="sd">        :param disp: Whether to display the Styler objects before returning</span>
+<span class="sd">        :param kwargs: reverse_colors, agg_func (see :py:class:`.SensitivityAnalyzer`)</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">config_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
+            <span class="n">agg_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">agg_func</span>
+        <span class="p">)</span>
+        <span class="n">config_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># Output a single Styler if only one or two variables</span>
         <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_values</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">_style_sensitivity_df</span><span class="p">(</span>
+            <span class="n">output</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)]</span> <span class="o">=</span> <span class="n">_style_sensitivity_df</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
                 <span class="n">sensitivity_cols</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
+                <span class="n">reverse_colors</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;reverse_colors&#39;</span><span class="p">],</span>
                 <span class="n">col_subset</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">],</span>
                 <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span>
             <span class="p">)</span>
@@ -274,35 +296,51 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
                 <span class="n">col1</span><span class="p">,</span>
                 <span class="n">col2</span><span class="p">,</span>
-                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span>
+                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
+                <span class="n">agg_func</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;agg_func&#39;</span><span class="p">]</span>
             <span class="p">)</span>
-            <span class="k">return</span> <span class="n">_style_sensitivity_df</span><span class="p">(</span>
+            <span class="n">output</span><span class="p">[(</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">_style_sensitivity_df</span><span class="p">(</span>
                 <span class="n">df</span><span class="p">,</span>
                 <span class="n">col1</span><span class="p">,</span>
                 <span class="n">col2</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span>
-                <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
+                <span class="n">reverse_colors</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;reverse_colors&#39;</span><span class="p">],</span>
                 <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
             <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="c1"># Need to output multiple, one for each pair of variables</span>
+            <span class="k">for</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">_two_variable_sensitivity_display_df</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
+                    <span class="n">col1</span><span class="p">,</span>
+                    <span class="n">col2</span><span class="p">,</span>
+                    <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span>
+                <span class="p">)</span>
+                <span class="n">output</span><span class="p">[(</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">_style_sensitivity_df</span><span class="p">(</span>
+                    <span class="n">df</span><span class="p">,</span>
+                    <span class="n">col1</span><span class="p">,</span>
+                    <span class="n">col2</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span>
+                    <span class="n">reverse_colors</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;reverse_colors&#39;</span><span class="p">],</span>
+                    <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
+                <span class="p">))</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;must pass sensitivity columns&#39;</span><span class="p">)</span>
 
-        <span class="c1"># Length must be greater than 2, need to output multiple, one for each pair of variables</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">col1</span><span class="p">,</span> <span class="n">col2</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
-            <span class="n">df</span> <span class="o">=</span> <span class="n">_two_variable_sensitivity_display_df</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
-                <span class="n">col1</span><span class="p">,</span>
-                <span class="n">col2</span><span class="p">,</span>
-                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span>
-            <span class="p">)</span>
-            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_style_sensitivity_df</span><span class="p">(</span>
-                <span class="n">df</span><span class="p">,</span>
-                <span class="n">col1</span><span class="p">,</span>
-                <span class="n">col2</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span>
-                <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
-                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
-            <span class="p">))</span>
-        <span class="k">return</span> <span class="n">results</span></div>
+        <span class="k">if</span> <span class="n">disp</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">var_tup</span><span class="p">,</span> <span class="n">sens_df</span> <span class="ow">in</span> <span class="n">output</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">var_str</span> <span class="o">=</span> <span class="s1">&#39; vs. &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">var_tup</span><span class="p">)</span>
+                <span class="n">title_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{self.result_name}</span><span class="s1"> by </span><span class="si">{var_str}</span><span class="s1">&#39;</span>
+                <span class="n">_display_header</span><span class="p">(</span><span class="n">title_str</span><span class="p">)</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">sens_df</span><span class="o">.</span><span class="n">render</span><span class="p">()))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># get Styler object out of dictionary</span>
+
+        <span class="k">return</span> <span class="n">output</span></div></div>
+
+
+<span class="k">def</span> <span class="nf">_display_header</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">html_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;h2&gt;</span><span class="si">{text}</span><span class="s1">&lt;/h2&gt;&#39;</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">html_str</span><span class="p">))</span>
 </pre></div>
 
            </div>

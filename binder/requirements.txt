@@ -1,4 +1,5 @@
-matplotlib
-sensitivity
+pandas>=1
 pd_utils
-pandas
+sensitivity
+matplotlib
+IPython
