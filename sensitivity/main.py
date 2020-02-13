@@ -80,7 +80,7 @@ class SensitivityAnalyzer:
         )
 
     def plot(self, **kwargs) -> plt.Figure:
-        config_dict = dict(
+        config_dict: Dict[str, Any] = dict(
             result_name=self.result_name,
             agg_func=self.agg_func,
             reverse_colors=self.reverse_colors,
@@ -96,7 +96,7 @@ class SensitivityAnalyzer:
 
     def styled_dfs(self, disp: bool = True, **kwargs) -> Union[Styler, Dict[Sequence[str], Styler]]:
         output = {}
-        config_dict = dict(
+        config_dict: Dict[str, Any] = dict(
             reverse_colors=self.reverse_colors,
             agg_func=self.agg_func
         )
