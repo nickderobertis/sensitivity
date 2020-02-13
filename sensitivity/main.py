@@ -109,7 +109,8 @@ class SensitivityAnalyzer:
                 self.df,
                 col1,
                 col2,
-                result_col=self.result_name
+                result_col=self.result_name,
+                agg_func=self.agg_func
             )
             return _style_sensitivity_df(
                 df,
