@@ -1,0 +1,748 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script >var copybuttonSkipText = '>>> ';</script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_paramlinks.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sensitivity" href="../api/modules.html" />
+    <link rel="prev" title="Example Usage" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> sensitivity
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Getting started with sensitivity</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Example Usage</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sensitivity Analysis in Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-sensitivity-analysis">What is Sensitivity Analysis?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-do-sensitivity-analysis-in-python">How to Do Sensitivity Analysis in Python?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-sensitivity-library">Using The Sensitivity Library</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">sensitivity</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sensitivity</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Example Usage</a> &raquo;</li>
+        
+      <li>Sensitivity Analysis in Python</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/auto_examples/sensitivity_analysis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-sensitivity-analysis-py"><span class="std std-ref">here</span></a> to download the full example code or to run this example in your browser via Binder</p>
+</div>
+<div class="sphx-glr-example-title section" id="sensitivity-analysis-in-python">
+<span id="sphx-glr-auto-examples-sensitivity-analysis-py"></span><h1>Sensitivity Analysis in Python<a class="headerlink" href="#sensitivity-analysis-in-python" title="Permalink to this headline">¶</a></h1>
+<p>This guide is organized in the following sections:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#What-is-Sensitivity-Analysis%3F">**Sensitivity Analysis
+Theory**</a></p></li>
+<li><p><a class="reference external" href="#How-to-Do-Sensitivity-Analysis-in-Python%3F">**The Hard Way**</a></p></li>
+<li><p><cite>**The Easy Way (use
+``sensitivity`</cite>)** &lt;#Using-The-Sensitivity-Library&gt;`__</p></li>
+</ul>
+<div class="section" id="what-is-sensitivity-analysis">
+<h2>What is Sensitivity Analysis?<a class="headerlink" href="#what-is-sensitivity-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Sensitivity Analysis is the process of passing different inputs to a
+model to see how the outputs change. It differs from Monte Carlo
+Simulation in that no probability distributions are assigned to the
+inputs, and typically larger ranges of the inputs are chosen. The
+purpose of Sensitivity Analysis is to understand how the outputs change
+over the full range of possible inputs. Sensitivity Analysis does not
+derive any expected outcome or a probability distribution of outcomes,
+instead returning a range of possible output values associated with each
+set of inputs.</p>
+<p>The general process for Sensitivity Analysis is as follows:</p>
+<p>For the model given by:</p>
+<div class="math notranslate nohighlight">
+\[y = f(X)\]</div>
+<div class="math notranslate nohighlight">
+\[X = [x_1, x_2, ..., x_n]\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y\)</span>: Model output</p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span>: Model input matrix</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> Value if <span class="math notranslate nohighlight">\(i\)</span>th <span class="math notranslate nohighlight">\(x\)</span> variable</p></li>
+</ul>
+<p>Follow the following steps:</p>
+<ul class="simple">
+<li><p>Choose a set of values for each <span class="math notranslate nohighlight">\(x_i\)</span></p></li>
+<li><p>Take the cartesian product of these values as
+<span class="math notranslate nohighlight">\([X_1, X_2, ..., X_m]\)</span></p></li>
+<li><p>For each <span class="math notranslate nohighlight">\(X_i\)</span>, calculate <span class="math notranslate nohighlight">\(y_i = f(X_i)\)</span></p></li>
+<li><p>Store the values of <span class="math notranslate nohighlight">\(X_i\)</span> mapped to <span class="math notranslate nohighlight">\(y_i\)</span></p></li>
+<li><p>Visualize <span class="math notranslate nohighlight">\(y_i\)</span> versus <span class="math notranslate nohighlight">\(X_i\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="how-to-do-sensitivity-analysis-in-python">
+<h2>How to Do Sensitivity Analysis in Python?<a class="headerlink" href="#how-to-do-sensitivity-analysis-in-python" title="Permalink to this headline">¶</a></h2>
+<p>Abstract algorithms are great, but let’s see the code that can make this
+happen. First we’ll import pandas to use later and define a function
+which represents the model:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">my_model</span><span class="p">(</span><span class="n">x_1</span><span class="p">,</span> <span class="n">x_2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents f from above</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x_1</span> <span class="o">**</span> <span class="n">x_2</span>
+</pre></div>
+</div>
+<p>We can run this model once to get a single result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y</span></a>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>16
+</pre></div>
+</div>
+<p>Now let’s go step by step through the above algorithm. First let’s
+choose a set of values for each <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x1_values</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x2_values</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>While we can use <code class="docutils literal notranslate"><span class="pre">itertools.product</span></code> to take a cartesian product of an
+arbitrary number of inputs, a more straightforward approach is to use
+nested for loops. A for loop within a for loop will run with each
+combination of the inputs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x1_values</span></a><span class="p">:</span>
+    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x2_values</span></a><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>10 1
+10 2
+10 3
+20 1
+20 2
+20 3
+30 1
+30 2
+30 3
+</pre></div>
+</div>
+<p>Now we have each <span class="math notranslate nohighlight">\(X_i\)</span>, we need to calculate <span class="math notranslate nohighlight">\(y_i = f(X_i)\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x1_values</span></a><span class="p">:</span>
+    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x2_values</span></a><span class="p">:</span>
+        <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y_i</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y_i</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>10
+100
+1000
+20
+400
+8000
+30
+900
+27000
+</pre></div>
+</div>
+<p>Now store the values of <span class="math notranslate nohighlight">\(X_i\)</span> mapped to <span class="math notranslate nohighlight">\(y_i\)</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">outputs</span></a> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x1_values</span></a><span class="p">:</span>
+    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x2_values</span></a><span class="p">:</span>
+        <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y_i</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a><span class="p">)</span>
+        <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">outputs</span></a><span class="o">.</span><span class="n">append</span><span class="p">((</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y_i</span></a><span class="p">))</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">outputs</span></a>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[(10, 1, 10), (10, 2, 100), (10, 3, 1000), (20, 1, 20), (20, 2, 400), (20, 3, 8000), (30, 1, 30), (30, 2, 900), (30, 3, 27000)]
+</pre></div>
+</div>
+<p>Now the last is to visualize the result. We can do this with a table
+format through a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">outputs</span></a><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x_1</th>
+      <th>x_2</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>1</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>2</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10</td>
+      <td>3</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>20</td>
+      <td>1</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>20</td>
+      <td>2</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>20</td>
+      <td>3</td>
+      <td>8000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>30</td>
+      <td>1</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>30</td>
+      <td>2</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>30</td>
+      <td>3</td>
+      <td>27000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br />
+<br /><p>We can add some styling to the DataFrame to highlight the high and low
+values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<style  type="text/css" >
+    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow0_col2 {
+            background-color:  #a50026;
+            color:  #f1f1f1;
+        }    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow1_col2 {
+            background-color:  #a50026;
+            color:  #f1f1f1;
+        }    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow2_col2 {
+            background-color:  #b71126;
+            color:  #f1f1f1;
+        }    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow3_col2 {
+            background-color:  #a50026;
+            color:  #f1f1f1;
+        }    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow4_col2 {
+            background-color:  #ab0626;
+            color:  #f1f1f1;
+        }    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow5_col2 {
+            background-color:  #fcaa5f;
+            color:  #000000;
+        }    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow6_col2 {
+            background-color:  #a50026;
+            color:  #f1f1f1;
+        }    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow7_col2 {
+            background-color:  #b50f26;
+            color:  #f1f1f1;
+        }    #T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow8_col2 {
+            background-color:  #006837;
+            color:  #f1f1f1;
+        }</style><table id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01ee" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >x_1</th>        <th class="col_heading level0 col1" >x_2</th>        <th class="col_heading level0 col2" >y</th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row0" class="row_heading level0 row0" >0</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow0_col0" class="data row0 col0" >10</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow0_col1" class="data row0 col1" >1</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow0_col2" class="data row0 col2" >10</td>
+            </tr>
+            <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row1" class="row_heading level0 row1" >1</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow1_col0" class="data row1 col0" >10</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow1_col1" class="data row1 col1" >2</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow1_col2" class="data row1 col2" >100</td>
+            </tr>
+            <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row2" class="row_heading level0 row2" >2</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow2_col0" class="data row2 col0" >10</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow2_col1" class="data row2 col1" >3</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow2_col2" class="data row2 col2" >1000</td>
+            </tr>
+            <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row3" class="row_heading level0 row3" >3</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow3_col0" class="data row3 col0" >20</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow3_col1" class="data row3 col1" >1</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow3_col2" class="data row3 col2" >20</td>
+            </tr>
+            <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row4" class="row_heading level0 row4" >4</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow4_col0" class="data row4 col0" >20</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow4_col1" class="data row4 col1" >2</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow4_col2" class="data row4 col2" >400</td>
+            </tr>
+            <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row5" class="row_heading level0 row5" >5</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow5_col0" class="data row5 col0" >20</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow5_col1" class="data row5 col1" >3</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow5_col2" class="data row5 col2" >8000</td>
+            </tr>
+            <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row6" class="row_heading level0 row6" >6</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow6_col0" class="data row6 col0" >30</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow6_col1" class="data row6 col1" >1</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow6_col2" class="data row6 col2" >30</td>
+            </tr>
+            <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row7" class="row_heading level0 row7" >7</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow7_col0" class="data row7 col0" >30</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow7_col1" class="data row7 col1" >2</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow7_col2" class="data row7 col2" >900</td>
+            </tr>
+            <tr>
+                        <th id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eelevel0_row8" class="row_heading level0 row8" >8</th>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow8_col0" class="data row8 col0" >30</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow8_col1" class="data row8 col1" >3</td>
+                        <td id="T_f4ba9e86_4e5a_11ea_a1c2_000d3a7b01eerow8_col2" class="data row8 col2" >27000</td>
+            </tr>
+    </tbody></table>
+<br />
+<br /><p>We can plot the result as well with a hex-bin plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y</span></a><span class="o">=</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_sensitivity_analysis_001.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_001.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7fbef3acc050&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-sensitivity-library">
+<h2>Using The Sensitivity Library<a class="headerlink" href="#using-the-sensitivity-library" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sensitivity</span></code> package is designed around making this whole process
+easier. It is also able to handle more than two varying inputs with
+ease. The basic usage is to construct a dictionary where the keys are
+the names of inputs in a function and values are iterables of the values
+for that input. Then this dictionary is passed to
+<code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> along with the function. The rest is handled for
+you.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sensitivity</span> <span class="kn">import</span> <span class="n">SensitivityAnalyzer</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;x_1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="s1">&#39;x_2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now that we have created the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> object, it has
+finished the sensitivity analysis. We can view a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with the
+results at <code class="docutils literal notranslate"><span class="pre">.df</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sa</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x_1</th>
+      <th>x_2</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>1</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>2</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10</td>
+      <td>3</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>20</td>
+      <td>1</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>20</td>
+      <td>2</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>20</td>
+      <td>3</td>
+      <td>8000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>30</td>
+      <td>1</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>30</td>
+      <td>2</td>
+      <td>900</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>30</td>
+      <td>3</td>
+      <td>27000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br />
+<br /><p>We can also get the hex-bin plot and styled DataFrame:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a><span class="p">()</span>
+
+<span class="n">styled</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_sensitivity_analysis_002.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_002.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+</pre></div>
+</div>
+<p>When creating the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> object, you can pass other
+options for formatting the outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">reverse_colors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a><span class="p">()</span>
+
+<span class="n">styled</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_sensitivity_analysis_003.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_003.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+</pre></div>
+</div>
+<p>This all works with more than two inputs as well. In that case we will
+get multiple pair-wise plots and styled <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>s:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_model_2</span><span class="p">(</span><span class="n">x_1</span><span class="p">,</span> <span class="n">x_2</span><span class="p">,</span> <span class="n">x_3</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x_1</span> <span class="o">*</span> <span class="n">x_2</span> <span class="o">**</span> <span class="n">x_3</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;x_1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s1">&#39;x_2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="s1">&#39;x_3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model_2</span></a><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a><span class="p">()</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_sensitivity_analysis_004.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_004.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+</pre></div>
+</div>
+<p>The plot is still a single <code class="docutils literal notranslate"><span class="pre">Figure</span></code> object, but the <code class="docutils literal notranslate"><span class="pre">styled_dfs</span></code>
+produces a dictionary where there are more than two inputs. The keys of
+the dictionary are a tuple of the column names involved in the
+<code class="docutils literal notranslate"><span class="pre">Styler</span></code>, and the values are the <code class="docutils literal notranslate"><span class="pre">Styler</span></code>s.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">styled_dict</span></a>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fbedfe72d50&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fbedfe33c50&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fbedfb542d0&gt;}
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.035 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sensitivity-analysis-py">
+<div class="binder-badge docutils container">
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/nickderobertis/sensitivity/gh-pages?urlpath=lab/tree/notebooks/auto_examples/sensitivity_analysis.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" width="150px" /></a>
+</div>
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/17297e7021efc063eeb8f7d3463c904b/sensitivity_analysis.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">sensitivity_analysis.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/0e62e40f5e7aca87815804d5802aeee2/sensitivity_analysis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">sensitivity_analysis.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/modules.html" class="btn btn-neutral float-right" title="sensitivity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Example Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Nick DeRobertis
+
+    </p>
+  </div>
+    
+    
+      Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-158144725-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
