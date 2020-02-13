@@ -1,9 +1,11 @@
 from typing import Dict, Any, Callable, Sequence, Optional
 import itertools
 from copy import deepcopy
+
 import pandas as pd
 import pd_utils
 from pandas.io.formats.style import Styler
+import numpy as np
 
 from sensitivity.colors import _get_color_map
 
@@ -40,8 +42,15 @@ def sensitivity_df(sensitivity_values: Dict[str, Any], func: Callable,
 
 
 def _two_variable_sensitivity_display_df(df: pd.DataFrame, col1: str, col2: str,
-                                         result_col: str = 'Result') -> pd.DataFrame:
-    selected_df = df[[col1, col2, result_col]]
+                                         result_col: str = 'Result', agg_func: Callable = np.mean) -> pd.DataFrame:
+    df_or_series = df[[col1, col2, result_col]].groupby([col1, col2]).apply(agg_func)
+    if isinstance(df_or_series, pd.DataFrame):
+        series = df_or_series[result_col]
+    elif isinstance(df_or_series, pd.Series):
+        series = df_or_series
+    else:
+        raise ValueError(f'expected Series or DataFrame, got {df_or_series} of type {type(df_or_series)}')
+    selected_df = series.reset_index()
     wide_df = pd_utils.long_to_wide(
         selected_df,
         col1,

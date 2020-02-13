@@ -1,10 +1,11 @@
 import itertools
 from dataclasses import dataclass
-from typing import Dict, Any, Callable, Optional, List, Union
+from typing import Dict, Any, Callable, Optional, List, Union, Sequence
 
 import numpy as np
 from pandas.io.formats.style import Styler
 import matplotlib.pyplot as plt
+from IPython.display import display, HTML
 
 from sensitivity.df import sensitivity_df, _style_sensitivity_df, _two_variable_sensitivity_display_df
 from sensitivity.hexbin import sensitivity_hex_plots, _hex_figure_from_sensitivity_df
@@ -54,10 +55,10 @@ class SensitivityAnalyzer:
         >>> sa.df
         >>>
         >>> # Styled DataFrame
-        >>> sa.styled_dfs
+        >>> sa.styled_dfs()
         >>>
         >>> # Hex-Bin Plot
-        >>> sa.plot
+        >>> sa.plot()
     """
     sensitivity_values: Dict[str, Any]
     func: Callable
@@ -78,27 +79,48 @@ class SensitivityAnalyzer:
             **self.func_kwargs_dict
         )
 
-    @property
-    def plot(self) -> plt.Figure:
+    def plot(self, **kwargs) -> plt.Figure:
+        """
+        Creates hex-bin plots of the sensitivity analysis results
+
+        :param kwargs: agg_func, reverse_colors, grid_size (see :py:class:`.SensitivityAnalyzer`)
+        :return: Matplotlib Figure containing one or more plots of sensitivity analysis results
+        """
+        config_dict: Dict[str, Any] = dict(
+            agg_func=self.agg_func,
+            reverse_colors=self.reverse_colors,
+            grid_size=self.grid_size
+        )
+        config_dict.update(**kwargs)
         sensitivity_cols = list(self.sensitivity_values.keys())
         return _hex_figure_from_sensitivity_df(
             self.df,
             sensitivity_cols,
             result_name=self.result_name,
-            agg_func=self.agg_func,
-            reverse_colors=self.reverse_colors,
-            grid_size=self.grid_size
+            **config_dict
         )
 
-    @property
-    def styled_dfs(self) -> Union[Styler, List[Styler]]:
+    def styled_dfs(self, disp: bool = True, **kwargs) -> Union[Styler, Dict[Sequence[str], Styler]]:
+        """
+        Creates Pandas Styler objects showing a gradient over the sensitivity results
+
+        :param disp: Whether to display the Styler objects before returning
+        :param kwargs: reverse_colors, agg_func (see :py:class:`.SensitivityAnalyzer`)
+        :return:
+        """
+        output = {}
+        config_dict: Dict[str, Any] = dict(
+            reverse_colors=self.reverse_colors,
+            agg_func=self.agg_func
+        )
+        config_dict.update(**kwargs)
         # Output a single Styler if only one or two variables
         sensitivity_cols = list(self.sensitivity_values.keys())
         if len(sensitivity_cols) == 1:
-            return _style_sensitivity_df(
+            output[tuple(sensitivity_cols)] = _style_sensitivity_df(
                 self.df,
                 sensitivity_cols[0],
-                reverse_colors=self.reverse_colors,
+                reverse_colors=config_dict['reverse_colors'],
                 col_subset=[self.result_name],
                 result_col=self.result_name
             )
@@ -109,32 +131,48 @@ class SensitivityAnalyzer:
                 self.df,
                 col1,
                 col2,
-                result_col=self.result_name
+                result_col=self.result_name,
+                agg_func=config_dict['agg_func']
             )
-            return _style_sensitivity_df(
+            output[(col1, col2)] = _style_sensitivity_df(
                 df,
                 col1,
                 col2=col2,
-                reverse_colors=self.reverse_colors,
+                reverse_colors=config_dict['reverse_colors'],
                 result_col=self.result_name,
             )
+        elif len(sensitivity_cols) > 2:
+            # Need to output multiple, one for each pair of variables
+            for col1, col2 in itertools.combinations(sensitivity_cols, 2):
+                df = _two_variable_sensitivity_display_df(
+                    self.df,
+                    col1,
+                    col2,
+                    result_col=self.result_name
+                )
+                output[(col1, col2)] = (_style_sensitivity_df(
+                    df,
+                    col1,
+                    col2=col2,
+                    reverse_colors=config_dict['reverse_colors'],
+                    result_col=self.result_name,
+                ))
         elif len(sensitivity_cols) == 0:
             raise ValueError('must pass sensitivity columns')
 
-        # Length must be greater than 2, need to output multiple, one for each pair of variables
-        results = []
-        for col1, col2 in itertools.combinations(sensitivity_cols, 2):
-            df = _two_variable_sensitivity_display_df(
-                self.df,
-                col1,
-                col2,
-                result_col=self.result_name
-            )
-            results.append(_style_sensitivity_df(
-                df,
-                col1,
-                col2=col2,
-                reverse_colors=self.reverse_colors,
-                result_col=self.result_name,
-            ))
-        return results
+        if disp:
+            for var_tup, sens_df in output.items():
+                var_str = ' vs. '.join(var_tup)
+                title_str = f'{self.result_name} by {var_str}'
+                _display_header(title_str)
+                display(HTML(sens_df.render()))
+
+        if len(output) == 1:
+            return list(output.values())[0]  # get Styler object out of dictionary
+
+        return output
+
+
+def _display_header(text: str):
+    html_str = f'<h2>{text}</h2>'
+    display(HTML(html_str))
