@@ -33,7 +33,7 @@ class TestSensitivityAnalyzer:
 
     def test_create_styled_dfs(self):
         sa = self.create_sa()
-        result = sa.styled_dfs
+        result = sa.styled_dfs()
         # TODO [#1]: determine how to test pandas Styler object beyond creation without error
 
     def test_create_styled_dfs_three_values(self):
@@ -41,11 +41,11 @@ class TestSensitivityAnalyzer:
             sensitivity_values=SENSITIVITY_VALUES_THREE_VALUE,
             func=add_10_to_values,
         )
-        result = sa.styled_dfs
+        result = sa.styled_dfs()
 
     def test_create_plot(self):
         sa = self.create_sa()
-        result = sa.plot
+        result = sa.plot()
         # TODO [#2]: determine how to test matplotlib figures beyond creation without error
 
     def test_create_plot_three_values(self):
@@ -53,4 +53,4 @@ class TestSensitivityAnalyzer:
             sensitivity_values=SENSITIVITY_VALUES_THREE_VALUE,
             func=add_10_to_values,
         )
-        result = sa.plot
+        result = sa.plot()
