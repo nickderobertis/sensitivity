@@ -3,12 +3,13 @@ from dataclasses import dataclass
 from typing import Dict, Any, Callable, Optional, List, Union, Sequence
 
 import numpy as np
+import pandas as pd
 from pandas.io.formats.style import Styler
 import matplotlib.pyplot as plt
 from IPython.display import display, HTML
 
 from sensitivity.df import sensitivity_df, _style_sensitivity_df, _two_variable_sensitivity_display_df
-from sensitivity.hexbin import sensitivity_hex_plots, _hex_figure_from_sensitivity_df
+from sensitivity.hexbin import _hex_figure_from_sensitivity_df
 
 
 @dataclass
@@ -31,6 +32,8 @@ class SensitivityAnalyzer:
         reverse_colors=True to have green represent low values of result and red for high values.
     :param grid_size: Number of hex bins on each axis. E.g. passing 5 would create a 5x5 grid, 25 hex bins.
     :param func_kwargs: Additional arguments to pass to func, regardless of the sensitivity values picked
+    :param num_fmt: used to apply additional styling to DataFrames. Should be a number format string in the
+        same style as would be passed to df.style.format, e.g. '${:,.2f}' for USD formatting
     :return: Sensitivity analysis hex bin sub plot figure
 
     Examples:
@@ -68,6 +71,7 @@ class SensitivityAnalyzer:
     reverse_colors: bool = False
     grid_size: int = 8
     func_kwargs_dict: Optional[Dict[str, Any]] = None
+    num_fmt: Optional[str] = None
 
     def __post_init__(self):
         if self.func_kwargs_dict is None:
@@ -105,13 +109,14 @@ class SensitivityAnalyzer:
         Creates Pandas Styler objects showing a gradient over the sensitivity results
 
         :param disp: Whether to display the Styler objects before returning
-        :param kwargs: reverse_colors, agg_func (see :py:class:`.SensitivityAnalyzer`)
+        :param kwargs: reverse_colors, agg_func, num_fmt (see :py:class:`.SensitivityAnalyzer`)
         :return:
         """
         output = {}
         config_dict: Dict[str, Any] = dict(
             reverse_colors=self.reverse_colors,
-            agg_func=self.agg_func
+            agg_func=self.agg_func,
+            num_fmt=self.num_fmt,
         )
         config_dict.update(**kwargs)
         # Output a single Styler if only one or two variables
@@ -122,7 +127,8 @@ class SensitivityAnalyzer:
                 sensitivity_cols[0],
                 reverse_colors=config_dict['reverse_colors'],
                 col_subset=[self.result_name],
-                result_col=self.result_name
+                result_col=self.result_name,
+                num_fmt=config_dict['num_fmt'],
             )
         elif len(sensitivity_cols) == 2:
             col1 = sensitivity_cols[0]
@@ -140,6 +146,7 @@ class SensitivityAnalyzer:
                 col2=col2,
                 reverse_colors=config_dict['reverse_colors'],
                 result_col=self.result_name,
+                num_fmt=config_dict['num_fmt'],
             )
         elif len(sensitivity_cols) > 2:
             # Need to output multiple, one for each pair of variables
@@ -156,6 +163,7 @@ class SensitivityAnalyzer:
                     col2=col2,
                     reverse_colors=config_dict['reverse_colors'],
                     result_col=self.result_name,
+                    num_fmt=config_dict['num_fmt'],
                 ))
         elif len(sensitivity_cols) == 0:
             raise ValueError('must pass sensitivity columns')

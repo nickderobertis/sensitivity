@@ -1,8 +1,11 @@
+import uuid
+
 from pandas.testing import assert_frame_equal
 
 from sensitivity import SensitivityAnalyzer
 from tests.base import EXPECT_DF_TWO_VALUE, SENSITIVITY_VALUES_TWO_VALUE, add_5_to_values, RESULT_NAME, \
-    SENSITIVITY_VALUES_THREE_VALUE, add_10_to_values, EXPECT_DF_THREE_VALUE
+    SENSITIVITY_VALUES_THREE_VALUE, add_10_to_values, EXPECT_DF_THREE_VALUE, assert_styled_matches, \
+    DF_STYLED_NUM_FMT_PATH
 
 
 class TestSensitivityAnalyzer:
@@ -34,7 +37,15 @@ class TestSensitivityAnalyzer:
     def test_create_styled_dfs(self):
         sa = self.create_sa()
         result = sa.styled_dfs()
-        # TODO [#1]: determine how to test pandas Styler object beyond creation without error
+        assert_styled_matches(result)
+
+    def test_create_styled_dfs_with_num_fmt(self):
+        sa = self.create_sa(num_fmt='${:,.0f}')
+        result = sa.styled_dfs()
+        sa2 = self.create_sa()
+        result2 = sa2.styled_dfs(num_fmt='${:,.0f}')
+        assert_styled_matches(result, DF_STYLED_NUM_FMT_PATH)
+        assert_styled_matches(result2, DF_STYLED_NUM_FMT_PATH)
 
     def test_create_styled_dfs_three_values(self):
         sa = self.create_sa(
