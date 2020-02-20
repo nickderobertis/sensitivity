@@ -52,11 +52,12 @@ def _hex_figure_from_sensitivity_df(df: pd.DataFrame, sensitivity_cols: Sequence
                                     result_name: str = 'Result', agg_func: Callable = np.mean,
                                     reverse_colors: bool = False, grid_size: int = 8) -> plt.Figure:
     color_map = _get_color_map(reverse_colors)
+    combos = list(itertools.combinations(sensitivity_cols, 2))
     num_columns = 3
-    num_rows = int(math.ceil(len(sensitivity_cols) / num_columns))
+    num_rows = int(math.ceil(len(combos) / num_columns))
     gs = GridSpec(num_rows, num_columns)
     fig = plt.figure(figsize=(15, 4 * num_rows))
-    for i, (x, y) in enumerate(itertools.combinations(sensitivity_cols, 2)):
+    for i, (x, y) in enumerate(combos):
         ax = fig.add_subplot(gs[i])
         hb = ax.hexbin(x=df[x],
                        y=df[y],
