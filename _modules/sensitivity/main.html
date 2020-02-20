@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.main &mdash; sensitivity 0.2.2 documentation</title>
+  <title>sensitivity.main &mdash; sensitivity 0.2.3 documentation</title>
   
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -169,12 +169,13 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Sequence</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">pandas.io.formats.style</span> <span class="kn">import</span> <span class="n">Styler</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 
 <span class="kn">from</span> <span class="nn">sensitivity.df</span> <span class="kn">import</span> <span class="n">sensitivity_df</span><span class="p">,</span> <span class="n">_style_sensitivity_df</span><span class="p">,</span> <span class="n">_two_variable_sensitivity_display_df</span>
-<span class="kn">from</span> <span class="nn">sensitivity.hexbin</span> <span class="kn">import</span> <span class="n">sensitivity_hex_plots</span><span class="p">,</span> <span class="n">_hex_figure_from_sensitivity_df</span>
+<span class="kn">from</span> <span class="nn">sensitivity.hexbin</span> <span class="kn">import</span> <span class="n">_hex_figure_from_sensitivity_df</span>
 
 
 <div class="viewcode-block" id="SensitivityAnalyzer"><a class="viewcode-back" href="../../api/sensitivity.html#sensitivity.main.SensitivityAnalyzer">[docs]</a><span class="nd">@dataclass</span>
@@ -197,6 +198,8 @@
 <span class="sd">        reverse_colors=True to have green represent low values of result and red for high values.</span>
 <span class="sd">    :param grid_size: Number of hex bins on each axis. E.g. passing 5 would create a 5x5 grid, 25 hex bins.</span>
 <span class="sd">    :param func_kwargs: Additional arguments to pass to func, regardless of the sensitivity values picked</span>
+<span class="sd">    :param num_fmt: used to apply additional styling to DataFrames. Should be a number format string in the</span>
+<span class="sd">        same style as would be passed to df.style.format, e.g. &#39;${:,.2f}&#39; for USD formatting</span>
 <span class="sd">    :return: Sensitivity analysis hex bin sub plot figure</span>
 
 <span class="sd">    Examples:</span>
@@ -234,6 +237,7 @@
     <span class="n">reverse_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">grid_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
     <span class="n">func_kwargs_dict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">num_fmt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_kwargs_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -271,13 +275,14 @@
 <span class="sd">        Creates Pandas Styler objects showing a gradient over the sensitivity results</span>
 
 <span class="sd">        :param disp: Whether to display the Styler objects before returning</span>
-<span class="sd">        :param kwargs: reverse_colors, agg_func (see :py:class:`.SensitivityAnalyzer`)</span>
+<span class="sd">        :param kwargs: reverse_colors, agg_func, num_fmt (see :py:class:`.SensitivityAnalyzer`)</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">output</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">config_dict</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">reverse_colors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reverse_colors</span><span class="p">,</span>
-            <span class="n">agg_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">agg_func</span>
+            <span class="n">agg_func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">agg_func</span><span class="p">,</span>
+            <span class="n">num_fmt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_fmt</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">config_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># Output a single Styler if only one or two variables</span>
@@ -288,7 +293,8 @@
                 <span class="n">sensitivity_cols</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                 <span class="n">reverse_colors</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;reverse_colors&#39;</span><span class="p">],</span>
                 <span class="n">col_subset</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">],</span>
-                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span>
+                <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
+                <span class="n">num_fmt</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;num_fmt&#39;</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">col1</span> <span class="o">=</span> <span class="n">sensitivity_cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -306,6 +312,7 @@
                 <span class="n">col2</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span>
                 <span class="n">reverse_colors</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;reverse_colors&#39;</span><span class="p">],</span>
                 <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
+                <span class="n">num_fmt</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;num_fmt&#39;</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="c1"># Need to output multiple, one for each pair of variables</span>
@@ -322,6 +329,7 @@
                     <span class="n">col2</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span>
                     <span class="n">reverse_colors</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;reverse_colors&#39;</span><span class="p">],</span>
                     <span class="n">result_col</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
+                    <span class="n">num_fmt</span><span class="o">=</span><span class="n">config_dict</span><span class="p">[</span><span class="s1">&#39;num_fmt&#39;</span><span class="p">],</span>
                 <span class="p">))</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;must pass sensitivity columns&#39;</span><span class="p">)</span>

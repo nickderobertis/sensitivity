@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.2 documentation</title>
+  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.3 documentation</title>
   
 
   
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -101,7 +101,10 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sensitivity Analysis in Python</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-sensitivity-analysis">What is Sensitivity Analysis?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-to-do-sensitivity-analysis-in-python">How to Do Sensitivity Analysis in Python?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-sensitivity-library">Using The Sensitivity Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-sensitivity-library">Using The Sensitivity Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-additional-styling-to-styled-dataframes">Adding Additional Styling to Styled <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -400,87 +403,87 @@ values:</p>
 </pre></div>
 </div>
 <style  type="text/css" >
-    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow0_col2 {
+    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row0_col2 {
             background-color:  #a50026;
             color:  #f1f1f1;
-        }    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow1_col2 {
+        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row1_col2 {
             background-color:  #a50026;
             color:  #f1f1f1;
-        }    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow2_col2 {
+        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row2_col2 {
             background-color:  #b71126;
             color:  #f1f1f1;
-        }    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow3_col2 {
+        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row3_col2 {
             background-color:  #a50026;
             color:  #f1f1f1;
-        }    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow4_col2 {
+        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row4_col2 {
             background-color:  #ab0626;
             color:  #f1f1f1;
-        }    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow5_col2 {
+        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row5_col2 {
             background-color:  #fcaa5f;
             color:  #000000;
-        }    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow6_col2 {
+        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row6_col2 {
             background-color:  #a50026;
             color:  #f1f1f1;
-        }    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow7_col2 {
+        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row7_col2 {
             background-color:  #b50f26;
             color:  #f1f1f1;
-        }    #T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow8_col2 {
+        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row8_col2 {
             background-color:  #006837;
             color:  #f1f1f1;
-        }</style><table id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8d" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >x_1</th>        <th class="col_heading level0 col1" >x_2</th>        <th class="col_heading level0 col2" >y</th>    </tr></thead><tbody>
+        }</style><table id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >x_1</th>        <th class="col_heading level0 col1" >x_2</th>        <th class="col_heading level0 col2" >y</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow0_col0" class="data row0 col0" >10</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow0_col1" class="data row0 col1" >1</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow0_col2" class="data row0 col2" >10</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row0" class="row_heading level0 row0" >0</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row0_col0" class="data row0 col0" >10</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row0_col1" class="data row0 col1" >1</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row0_col2" class="data row0 col2" >10</td>
             </tr>
             <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow1_col0" class="data row1 col0" >10</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow1_col1" class="data row1 col1" >2</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow1_col2" class="data row1 col2" >100</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row1" class="row_heading level0 row1" >1</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row1_col0" class="data row1 col0" >10</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row1_col1" class="data row1 col1" >2</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row1_col2" class="data row1 col2" >100</td>
             </tr>
             <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow2_col0" class="data row2 col0" >10</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow2_col1" class="data row2 col1" >3</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow2_col2" class="data row2 col2" >1000</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row2" class="row_heading level0 row2" >2</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row2_col0" class="data row2 col0" >10</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row2_col1" class="data row2 col1" >3</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row2_col2" class="data row2 col2" >1000</td>
             </tr>
             <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow3_col0" class="data row3 col0" >20</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow3_col1" class="data row3 col1" >1</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow3_col2" class="data row3 col2" >20</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row3" class="row_heading level0 row3" >3</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row3_col0" class="data row3 col0" >20</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row3_col1" class="data row3 col1" >1</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row3_col2" class="data row3 col2" >20</td>
             </tr>
             <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow4_col0" class="data row4 col0" >20</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow4_col1" class="data row4 col1" >2</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow4_col2" class="data row4 col2" >400</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row4" class="row_heading level0 row4" >4</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row4_col0" class="data row4 col0" >20</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row4_col1" class="data row4 col1" >2</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row4_col2" class="data row4 col2" >400</td>
             </tr>
             <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row5" class="row_heading level0 row5" >5</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow5_col0" class="data row5 col0" >20</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow5_col1" class="data row5 col1" >3</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow5_col2" class="data row5 col2" >8000</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row5" class="row_heading level0 row5" >5</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row5_col0" class="data row5 col0" >20</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row5_col1" class="data row5 col1" >3</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row5_col2" class="data row5 col2" >8000</td>
             </tr>
             <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row6" class="row_heading level0 row6" >6</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow6_col0" class="data row6 col0" >30</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow6_col1" class="data row6 col1" >1</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow6_col2" class="data row6 col2" >30</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row6" class="row_heading level0 row6" >6</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row6_col0" class="data row6 col0" >30</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row6_col1" class="data row6 col1" >1</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row6_col2" class="data row6 col2" >30</td>
             </tr>
             <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row7" class="row_heading level0 row7" >7</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow7_col0" class="data row7 col0" >30</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow7_col1" class="data row7 col1" >2</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow7_col2" class="data row7 col2" >900</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row7" class="row_heading level0 row7" >7</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row7_col0" class="data row7 col0" >30</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row7_col1" class="data row7 col1" >2</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row7_col2" class="data row7 col2" >900</td>
             </tr>
             <tr>
-                        <th id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8dlevel0_row8" class="row_heading level0 row8" >8</th>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow8_col0" class="data row8 col0" >30</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow8_col1" class="data row8 col1" >3</td>
-                        <td id="T_364f2d4c_53cb_11ea_96d0_000d3a7c3f8drow8_col2" class="data row8 col2" >27000</td>
+                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row8" class="row_heading level0 row8" >8</th>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row8_col0" class="data row8 col0" >30</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row8_col1" class="data row8 col1" >3</td>
+                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row8_col2" class="data row8 col2" >27000</td>
             </tr>
     </tbody></table>
 <br />
@@ -490,7 +493,7 @@ values:</p>
 </div>
 <img alt="../_images/sphx_glr_sensitivity_analysis_001.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f506b64ec90&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f751cc77390&gt;
 </pre></div>
 </div>
 </div>
@@ -663,10 +666,30 @@ the dictionary are a tuple of the column names involved in the
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f5057979390&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f50579b9d90&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f50579b9b10&gt;}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f750927bb50&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f750924d310&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f7508f6a850&gt;}
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.790 seconds)</p>
+<div class="section" id="adding-additional-styling-to-styled-dataframes">
+<h3>Adding Additional Styling to Styled <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code><a class="headerlink" href="#adding-additional-styling-to-styled-dataframes" title="Permalink to this headline">¶</a></h3>
+<p>It could be desired to pass some number or other formatting to the
+styled <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>. This can be done with the <code class="docutils literal notranslate"><span class="pre">num_fmt</span></code> argument,
+either when first creating the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> or when calling
+the <code class="docutils literal notranslate"><span class="pre">styled_dfs</span></code> method. Just pass it the string of the number format,
+in the same way you would specify the number formatting string for
+<code class="docutils literal notranslate"><span class="pre">df.style.format</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">(</span><span class="n">num_fmt</span><span class="o">=</span><span class="s1">&#39;$</span><span class="si">{:,.0f}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+&lt;IPython.core.display.HTML object&gt;
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.657 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sensitivity-analysis-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/nickderobertis/sensitivity/gh-pages?urlpath=lab/tree/notebooks/auto_examples/sensitivity_analysis.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" width="150px" /></a>
@@ -679,6 +702,7 @@ the dictionary are a tuple of the column names involved in the
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
 </div>
 </div>
 

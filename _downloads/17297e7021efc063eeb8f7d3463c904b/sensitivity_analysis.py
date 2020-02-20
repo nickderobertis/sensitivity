@@ -220,3 +220,18 @@ styled_dict = sa.styled_dfs()
 # 
 
 styled_dict
+
+
+######################################################################
+# Adding Additional Styling to Styled ``DataFrames``
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 
+# It could be desired to pass some number or other formatting to the
+# styled ``DataFrames``. This can be done with the ``num_fmt`` argument,
+# either when first creating the ``SensitivityAnalyzer`` or when calling
+# the ``styled_dfs`` method. Just pass it the string of the number format,
+# in the same way you would specify the number formatting string for
+# ``df.style.format``.
+# 
+
+styled_dict = sa.styled_dfs(num_fmt='${:,.0f}')

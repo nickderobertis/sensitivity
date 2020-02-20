@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.df &mdash; sensitivity 0.2.2 documentation</title>
+  <title>sensitivity.df &mdash; sensitivity 0.2.3 documentation</title>
   
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -230,14 +230,21 @@
 
 <span class="k">def</span> <span class="nf">_style_sensitivity_df</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">col1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">col2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">result_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Result&#39;</span><span class="p">,</span>
                           <span class="n">reverse_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                          <span class="n">col_subset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Styler</span><span class="p">:</span>
+                          <span class="n">col_subset</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">num_fmt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Styler</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">col2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">caption</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{result_col}</span><span class="s1"> - </span><span class="si">{col1}</span><span class="s1"> vs. </span><span class="si">{col2}</span><span class="s1">&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">caption</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{result_col}</span><span class="s1"> vs. </span><span class="si">{col1}</span><span class="s1">&#39;</span>
 
+    <span class="k">if</span> <span class="n">num_fmt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fmt_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">num_fmt</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">}</span>
+        <span class="n">styler</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fmt_dict</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">styler</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">style</span>
+
     <span class="n">color_str</span> <span class="o">=</span> <span class="n">_get_color_map</span><span class="p">(</span><span class="n">reverse_colors</span><span class="o">=</span><span class="n">reverse_colors</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span>
+    <span class="k">return</span> <span class="n">styler</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span>
         <span class="n">cmap</span><span class="o">=</span><span class="n">color_str</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">col_subset</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span>
     <span class="p">)</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="n">caption</span><span class="p">)</span>
 
