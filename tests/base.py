@@ -1,7 +1,13 @@
+import os
 from copy import deepcopy
 
 import pandas as pd
+from pandas.io.formats.style import Styler
 
+INPUT_FILES_FOLDER = os.path.join('tests', 'input_data')
+DF_STYLED_PATH = os.path.join(INPUT_FILES_FOLDER, 'df_styled.html')
+DF_STYLED_NUM_FMT_PATH = os.path.join(INPUT_FILES_FOLDER, 'df_styled_num_fmt.html')
+DF_STYLE_UUID = '1ee5ad65-4cac-42e3-8133-7ae800cb23ad'
 RESULT_NAME = 'my_res'
 EXPECT_DF_TWO_VALUE = pd.DataFrame(
     [
@@ -38,6 +44,14 @@ SENSITIVITY_VALUES_THREE_VALUE['value3'] = [6, 7]
 def add_5_to_values(value1, value2):
     return value1 + value2 + 5
 
+
 def add_10_to_values(value1, value2, value3=5):
     return value1 + value2 + value3 + 10
 
+
+def assert_styled_matches(styler: Styler, file_path: str = DF_STYLED_PATH):
+    with open(file_path, 'r') as f:
+        expect_html = f.read()
+
+    compare_html = styler.set_uuid(DF_STYLE_UUID).render()
+    assert compare_html == expect_html

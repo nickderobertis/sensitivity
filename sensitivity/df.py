@@ -64,14 +64,21 @@ def _two_variable_sensitivity_display_df(df: pd.DataFrame, col1: str, col2: str,
 
 def _style_sensitivity_df(df: pd.DataFrame, col1: str, col2: Optional[str] = None, result_col: str = 'Result',
                           reverse_colors: bool = False,
-                          col_subset: Optional[Sequence[str]] = None) -> Styler:
+                          col_subset: Optional[Sequence[str]] = None,
+                          num_fmt: Optional[str] = None) -> Styler:
     if col2 is not None:
         caption = f'{result_col} - {col1} vs. {col2}'
     else:
         caption = f'{result_col} vs. {col1}'
 
+    if num_fmt is not None:
+        fmt_dict = {col: num_fmt for col in df.columns}
+        styler = df.style.format(fmt_dict)
+    else:
+        styler = df.style
+
     color_str = _get_color_map(reverse_colors=reverse_colors)
-    return df.style.background_gradient(
+    return styler.background_gradient(
         cmap=color_str, subset=col_subset, axis=None
     ).set_caption(caption)
 
