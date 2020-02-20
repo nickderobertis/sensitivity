@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.hexbin &mdash; sensitivity 0.2.1 documentation</title>
+  <title>sensitivity.hexbin &mdash; sensitivity 0.2.2 documentation</title>
   
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -218,11 +218,12 @@
                                     <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Result&#39;</span><span class="p">,</span> <span class="n">agg_func</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
                                     <span class="n">reverse_colors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">:</span>
     <span class="n">color_map</span> <span class="o">=</span> <span class="n">_get_color_map</span><span class="p">(</span><span class="n">reverse_colors</span><span class="p">)</span>
+    <span class="n">combos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
     <span class="n">num_columns</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="n">num_rows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_columns</span><span class="p">))</span>
+    <span class="n">num_rows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">combos</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_columns</span><span class="p">))</span>
     <span class="n">gs</span> <span class="o">=</span> <span class="n">GridSpec</span><span class="p">(</span><span class="n">num_rows</span><span class="p">,</span> <span class="n">num_columns</span><span class="p">)</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">num_rows</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">combos</span><span class="p">):</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="n">hb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">x</span><span class="p">],</span>
                        <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">y</span><span class="p">],</span>

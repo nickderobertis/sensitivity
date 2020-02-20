@@ -1,5 +1,5 @@
 sensitivity
 IPython
 matplotlib
-pd_utils
 pandas>=1
+pd_utils
