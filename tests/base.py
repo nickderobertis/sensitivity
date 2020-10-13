@@ -1,13 +1,18 @@
 import os
 from copy import deepcopy
+from io import BytesIO
+from pathlib import Path
 
 import pandas as pd
 from pandas.io.formats.style import Styler
+import matplotlib.pyplot as plt
 
-INPUT_FILES_FOLDER = os.path.join('tests', 'input_data')
+INPUT_FILES_FOLDER = Path(os.path.join('tests', 'input_data'))
 DF_STYLED_PATH = os.path.join(INPUT_FILES_FOLDER, 'df_styled.html')
 DF_STYLED_NUM_FMT_PATH = os.path.join(INPUT_FILES_FOLDER, 'df_styled_num_fmt.html')
 DF_STYLE_UUID = '1ee5ad65-4cac-42e3-8133-7ae800cb23ad'
+DEFAULT_PLOT_PATH = INPUT_FILES_FOLDER / 'default_plot.png'
+PLOT_THREE_PATH = INPUT_FILES_FOLDER / 'plot_three.png'
 RESULT_NAME = 'my_res'
 EXPECT_DF_TWO_VALUE = pd.DataFrame(
     [
@@ -55,3 +60,21 @@ def assert_styled_matches(styler: Styler, file_path: str = DF_STYLED_PATH):
 
     compare_html = styler.set_uuid(DF_STYLE_UUID).render()
     assert compare_html == expect_html
+
+
+def assert_graph_matches(fig: plt.Figure, file_path: Path = DEFAULT_PLOT_PATH, generate: bool = False):
+    if generate:
+        fig.savefig(str(file_path))
+
+    compare_bytestream = BytesIO()
+    fig.savefig(compare_bytestream)
+    compare_bytestream.seek(0)
+    compare_bytes = compare_bytestream.read()
+
+    expect_bytes = file_path.read_bytes()
+
+    assert compare_bytes == expect_bytes
+
+
+
+
