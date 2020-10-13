@@ -1,6 +1,6 @@
-IPython
-pandas>=1
 tqdm
-pd_utils
 matplotlib
+pandas>=1
 sensitivity
+pd_utils
+IPython
