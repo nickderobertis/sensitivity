@@ -13,6 +13,7 @@ DF_STYLED_NUM_FMT_PATH = os.path.join(INPUT_FILES_FOLDER, 'df_styled_num_fmt.htm
 DF_STYLE_UUID = '1ee5ad65-4cac-42e3-8133-7ae800cb23ad'
 DEFAULT_PLOT_PATH = INPUT_FILES_FOLDER / 'default_plot.png'
 PLOT_THREE_PATH = INPUT_FILES_FOLDER / 'plot_three.png'
+PLOT_OPTIONS_PATH = INPUT_FILES_FOLDER / 'plot_options.png'
 RESULT_NAME = 'my_res'
 EXPECT_DF_TWO_VALUE = pd.DataFrame(
     [

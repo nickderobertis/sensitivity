@@ -13,6 +13,7 @@ from sensitivity.df import sensitivity_df
 def sensitivity_hex_plots(sensitivity_values: Dict[str, Any], func: Callable,
                           result_name: str = 'Result', agg_func: Callable = np.mean,
                           reverse_colors: bool = False, grid_size: int = 8,
+                          color_map: str = 'RdYlGn',
                           **func_kwargs) -> plt.Figure:
     """
     Create hexbin plots showing how the func result varies with a passed dictionary of input values.
@@ -28,6 +29,8 @@ def sensitivity_hex_plots(sensitivity_values: Dict[str, Any], func: Callable,
     :param reverse_colors: Default is for red to represent low values of result, green for high values. Set
         reverse_colors=True to have green represent low values of result and red for high values.
     :param grid_size: Number of hex bins on each axis. E.g. passing 5 would create a 5x5 grid, 25 hex bins.
+    :param color_map: matplotlib color map, default is RdYlGn (red, yellow, green). See
+        https://matplotlib.org/3.3.2/tutorials/colors/colormaps.html
     :param func_kwargs: Additional arguments to pass to func, regardless of the sensitivity values picked
     :return: Sensitivity analysis hex bin sub plot figure
     """
@@ -44,14 +47,16 @@ def sensitivity_hex_plots(sensitivity_values: Dict[str, Any], func: Callable,
         result_name=result_name,
         agg_func=agg_func,
         reverse_colors=reverse_colors,
-        grid_size=grid_size
+        grid_size=grid_size,
+        color_map=color_map,
     )
 
 
 def _hex_figure_from_sensitivity_df(df: pd.DataFrame, sensitivity_cols: Sequence[str],
                                     result_name: str = 'Result', agg_func: Callable = np.mean,
-                                    reverse_colors: bool = False, grid_size: int = 8) -> plt.Figure:
-    color_map = _get_color_map(reverse_colors)
+                                    reverse_colors: bool = False, grid_size: int = 8,
+                                    color_map: str = 'RdYlGn') -> plt.Figure:
+    color_str = _get_color_map(reverse_colors=reverse_colors, color_map=color_map)
     combos = list(itertools.combinations(sensitivity_cols, 2))
     num_columns = 3
     num_rows = int(math.ceil(len(combos) / num_columns))
@@ -64,7 +69,7 @@ def _hex_figure_from_sensitivity_df(df: pd.DataFrame, sensitivity_cols: Sequence
                        C=df[result_name],
                        reduce_C_function=agg_func,
                        gridsize=grid_size,
-                       cmap=color_map)
+                       cmap=color_str)
         plt.xlabel(x)
         plt.ylabel(y)
         cb = fig.colorbar(hb, ax=ax)
