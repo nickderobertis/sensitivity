@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.3 documentation</title>
+  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.4 documentation</title>
   
 
   
@@ -28,8 +28,7 @@
         <script src="../_static/language_data.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
-        <script >var copybuttonSkipText = '>>> ';</script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -38,10 +37,12 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   <link rel="stylesheet" href="../_static/sphinx_paramlinks.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="sensitivity" href="../api/modules.html" />
@@ -69,7 +70,7 @@
             
             
               <div class="version">
-                0.2.3
+                0.2.4
               </div>
             
           
@@ -182,7 +183,7 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-sensitivity-analysis-py"><span class="std std-ref">here</span></a> to download the full example code or to run this example in your browser via Binder</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-sensitivity-analysis-py"><span class="std std-ref">here</span></a>     to download the full example code or to run this example in your browser via Binder</p>
 </div>
 <div class="sphx-glr-example-title section" id="sensitivity-analysis-in-python">
 <span id="sphx-glr-auto-examples-sensitivity-analysis-py"></span><h1>Sensitivity Analysis in Python<a class="headerlink" href="#sensitivity-analysis-in-python" title="Permalink to this headline">¶</a></h1>
@@ -242,8 +243,8 @@ which represents the model:</p>
 </pre></div>
 </div>
 <p>We can run this model once to get a single result:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a> <span class="o">=</span> <span class="n">my_model</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -252,17 +253,17 @@ which represents the model:</p>
 </div>
 <p>Now let’s go step by step through the above algorithm. First let’s
 choose a set of values for each <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x1_values</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x2_values</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1_values</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2_values</span></a> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>While we can use <code class="docutils literal notranslate"><span class="pre">itertools.product</span></code> to take a cartesian product of an
 arbitrary number of inputs, a more straightforward approach is to use
 nested for loops. A for loop within a for loop will run with each
 combination of the inputs.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x1_values</span></a><span class="p">:</span>
-    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x2_values</span></a><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1_values</span></a><span class="p">:</span>
+    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2_values</span></a><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2</span></a><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -278,10 +279,10 @@ combination of the inputs.</p>
 </pre></div>
 </div>
 <p>Now we have each <span class="math notranslate nohighlight">\(X_i\)</span>, we need to calculate <span class="math notranslate nohighlight">\(y_i = f(X_i)\)</span>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x1_values</span></a><span class="p">:</span>
-    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x2_values</span></a><span class="p">:</span>
-        <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y_i</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y_i</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1_values</span></a><span class="p">:</span>
+    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2_values</span></a><span class="p">:</span>
+        <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_i</span></a> <span class="o">=</span> <span class="n">my_model</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2</span></a><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_i</span></a><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -297,12 +298,12 @@ combination of the inputs.</p>
 </pre></div>
 </div>
 <p>Now store the values of <span class="math notranslate nohighlight">\(X_i\)</span> mapped to <span class="math notranslate nohighlight">\(y_i\)</span>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">outputs</span></a> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x1_values</span></a><span class="p">:</span>
-    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">x2_values</span></a><span class="p">:</span>
-        <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y_i</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a><span class="p">)</span>
-        <a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">outputs</span></a><span class="o">.</span><span class="n">append</span><span class="p">((</span><a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">x2</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y_i</span></a><span class="p">))</span>
-<a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">outputs</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">outputs</span></a> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1_values</span></a><span class="p">:</span>
+    <span class="k">for</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2</span></a> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2_values</span></a><span class="p">:</span>
+        <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_i</span></a> <span class="o">=</span> <span class="n">my_model</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2</span></a><span class="p">)</span>
+        <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">outputs</span></a><span class="o">.</span><span class="n">append</span><span class="p">((</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_i</span></a><span class="p">))</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">outputs</span></a>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -311,7 +312,7 @@ combination of the inputs.</p>
 </div>
 <p>Now the last is to visualize the result. We can do this with a table
 format through a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">outputs</span></a><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">outputs</span></a><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -403,97 +404,88 @@ values:</p>
 </pre></div>
 </div>
 <style  type="text/css" >
-    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row0_col2 {
+#T_54e65240_0d8d_11eb_9732_000d3a7d3614row0_col2,#T_54e65240_0d8d_11eb_9732_000d3a7d3614row1_col2,#T_54e65240_0d8d_11eb_9732_000d3a7d3614row3_col2,#T_54e65240_0d8d_11eb_9732_000d3a7d3614row6_col2{
             background-color:  #a50026;
             color:  #f1f1f1;
-        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row1_col2 {
-            background-color:  #a50026;
-            color:  #f1f1f1;
-        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row2_col2 {
+        }#T_54e65240_0d8d_11eb_9732_000d3a7d3614row2_col2{
             background-color:  #b71126;
             color:  #f1f1f1;
-        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row3_col2 {
-            background-color:  #a50026;
-            color:  #f1f1f1;
-        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row4_col2 {
+        }#T_54e65240_0d8d_11eb_9732_000d3a7d3614row4_col2{
             background-color:  #ab0626;
             color:  #f1f1f1;
-        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row5_col2 {
+        }#T_54e65240_0d8d_11eb_9732_000d3a7d3614row5_col2{
             background-color:  #fcaa5f;
             color:  #000000;
-        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row6_col2 {
-            background-color:  #a50026;
-            color:  #f1f1f1;
-        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row7_col2 {
+        }#T_54e65240_0d8d_11eb_9732_000d3a7d3614row7_col2{
             background-color:  #b50f26;
             color:  #f1f1f1;
-        }    #T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row8_col2 {
+        }#T_54e65240_0d8d_11eb_9732_000d3a7d3614row8_col2{
             background-color:  #006837;
             color:  #f1f1f1;
-        }</style><table id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >x_1</th>        <th class="col_heading level0 col1" >x_2</th>        <th class="col_heading level0 col2" >y</th>    </tr></thead><tbody>
+        }</style><table id="T_54e65240_0d8d_11eb_9732_000d3a7d3614" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >x_1</th>        <th class="col_heading level0 col1" >x_2</th>        <th class="col_heading level0 col2" >y</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row0_col0" class="data row0 col0" >10</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row0_col1" class="data row0 col1" >1</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row0_col2" class="data row0 col2" >10</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row0" class="row_heading level0 row0" >0</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row0_col0" class="data row0 col0" >10</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row0_col1" class="data row0 col1" >1</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row0_col2" class="data row0 col2" >10</td>
             </tr>
             <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row1_col0" class="data row1 col0" >10</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row1_col1" class="data row1 col1" >2</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row1_col2" class="data row1 col2" >100</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row1" class="row_heading level0 row1" >1</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row1_col0" class="data row1 col0" >10</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row1_col1" class="data row1 col1" >2</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row1_col2" class="data row1 col2" >100</td>
             </tr>
             <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row2_col0" class="data row2 col0" >10</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row2_col1" class="data row2 col1" >3</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row2_col2" class="data row2 col2" >1000</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row2" class="row_heading level0 row2" >2</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row2_col0" class="data row2 col0" >10</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row2_col1" class="data row2 col1" >3</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row2_col2" class="data row2 col2" >1000</td>
             </tr>
             <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row3_col0" class="data row3 col0" >20</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row3_col1" class="data row3 col1" >1</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row3_col2" class="data row3 col2" >20</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row3" class="row_heading level0 row3" >3</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row3_col0" class="data row3 col0" >20</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row3_col1" class="data row3 col1" >1</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row3_col2" class="data row3 col2" >20</td>
             </tr>
             <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row4_col0" class="data row4 col0" >20</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row4_col1" class="data row4 col1" >2</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row4_col2" class="data row4 col2" >400</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row4" class="row_heading level0 row4" >4</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row4_col0" class="data row4 col0" >20</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row4_col1" class="data row4 col1" >2</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row4_col2" class="data row4 col2" >400</td>
             </tr>
             <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row5" class="row_heading level0 row5" >5</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row5_col0" class="data row5 col0" >20</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row5_col1" class="data row5 col1" >3</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row5_col2" class="data row5 col2" >8000</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row5" class="row_heading level0 row5" >5</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row5_col0" class="data row5 col0" >20</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row5_col1" class="data row5 col1" >3</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row5_col2" class="data row5 col2" >8000</td>
             </tr>
             <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row6" class="row_heading level0 row6" >6</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row6_col0" class="data row6 col0" >30</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row6_col1" class="data row6 col1" >1</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row6_col2" class="data row6 col2" >30</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row6" class="row_heading level0 row6" >6</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row6_col0" class="data row6 col0" >30</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row6_col1" class="data row6 col1" >1</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row6_col2" class="data row6 col2" >30</td>
             </tr>
             <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row7" class="row_heading level0 row7" >7</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row7_col0" class="data row7 col0" >30</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row7_col1" class="data row7 col1" >2</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row7_col2" class="data row7 col2" >900</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row7" class="row_heading level0 row7" >7</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row7_col0" class="data row7 col0" >30</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row7_col1" class="data row7 col1" >2</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row7_col2" class="data row7 col2" >900</td>
             </tr>
             <tr>
-                        <th id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620level0_row8" class="row_heading level0 row8" >8</th>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row8_col0" class="data row8 col0" >30</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row8_col1" class="data row8 col1" >3</td>
-                        <td id="T_9be0c2be_53d1_11ea_ab53_000d3a7b7620row8_col2" class="data row8 col2" >27000</td>
+                        <th id="T_54e65240_0d8d_11eb_9732_000d3a7d3614level0_row8" class="row_heading level0 row8" >8</th>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row8_col0" class="data row8 col0" >30</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row8_col1" class="data row8 col1" >3</td>
+                        <td id="T_54e65240_0d8d_11eb_9732_000d3a7d3614row8_col2" class="data row8 col2" >27000</td>
             </tr>
     </tbody></table>
 <br />
 <br /><p>We can plot the result as well with a hex-bin plot.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="View documentation for builtins.int"><span class="n">y</span></a><span class="o">=</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="o">=</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_sensitivity_analysis_001.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_001.png" />
+<img alt="sensitivity analysis" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f751cc77390&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x_1&#39;, ylabel=&#39;x_2&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -508,12 +500,17 @@ for that input. Then this dictionary is passed to
 you.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sensitivity</span> <span class="kn">import</span> <span class="n">SensitivityAnalyzer</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a> <span class="o">=</span> <span class="p">{</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;x_1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
     <span class="s1">&#39;x_2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">)</span>
+<span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <span class="n">my_model</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/9 [00:00&lt;?, ?it/s]
+100%|##########| 9/9 [00:00&lt;00:00, 921.58it/s]
 </pre></div>
 </div>
 <p>Now that we have created the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> object, it has
@@ -605,12 +602,12 @@ results at <code class="docutils literal notranslate"><span class="pre">.df</spa
 </div>
 <br />
 <br /><p>We can also get the hex-bin plot and styled DataFrame:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
 <span class="n">styled</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_sensitivity_analysis_002.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_002.png" />
+<img alt="sensitivity analysis" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_002.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
@@ -618,15 +615,17 @@ results at <code class="docutils literal notranslate"><span class="pre">.df</spa
 </div>
 <p>When creating the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> object, you can pass other
 options for formatting the outputs:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model</span></a><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">reverse_colors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <span class="n">my_model</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">reverse_colors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_map</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
 <span class="n">styled</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_sensitivity_analysis_003.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_003.png" />
+<img alt="sensitivity analysis" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_003.png" />
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/9 [00:00&lt;?, ?it/s]
+100%|##########| 9/9 [00:00&lt;00:00, 1030.94it/s]
+&lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
 </pre></div>
 </div>
@@ -635,22 +634,24 @@ get multiple pair-wise plots and styled <code class="docutils literal notranslat
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_model_2</span><span class="p">(</span><span class="n">x_1</span><span class="p">,</span> <span class="n">x_2</span><span class="p">,</span> <span class="n">x_3</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x_1</span> <span class="o">*</span> <span class="n">x_2</span> <span class="o">**</span> <span class="n">x_3</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a> <span class="o">=</span> <span class="p">{</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;x_1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
     <span class="s1">&#39;x_2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
     <span class="s1">&#39;x_3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#object" title="View documentation for builtins.object"><span class="n">my_model_2</span></a><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <span class="n">my_model_2</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
-<a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="View documentation for matplotlib.figure.Figure"><span class="n">plot</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
-<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_sensitivity_analysis_004.png" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_004.png" />
+<img alt="sensitivity analysis" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_004.png" />
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/27 [00:00&lt;?, ?it/s]
+100%|##########| 27/27 [00:00&lt;00:00, 975.41it/s]
+&lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
@@ -662,11 +663,11 @@ get multiple pair-wise plots and styled <code class="docutils literal notranslat
 produces a dictionary where there are more than two inputs. The keys of
 the dictionary are a tuple of the column names involved in the
 <code class="docutils literal notranslate"><span class="pre">Styler</span></code>, and the values are the <code class="docutils literal notranslate"><span class="pre">Styler</span></code>s.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">styled_dict</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">styled_dict</span></a>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f750927bb50&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f750924d310&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f7508f6a850&gt;}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f2994babe50&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f299270f850&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f2992707ca0&gt;}
 </pre></div>
 </div>
 <div class="section" id="adding-additional-styling-to-styled-dataframes">
@@ -677,7 +678,7 @@ either when first creating the <code class="docutils literal notranslate"><span 
 the <code class="docutils literal notranslate"><span class="pre">styled_dfs</span></code> method. Just pass it the string of the number format,
 in the same way you would specify the number formatting string for
 <code class="docutils literal notranslate"><span class="pre">df.style.format</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="View documentation for builtins.dict"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">(</span><span class="n">num_fmt</span><span class="o">=</span><span class="s1">&#39;$</span><span class="si">{:,.0f}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">(</span><span class="n">num_fmt</span><span class="o">=</span><span class="s1">&#39;$</span><span class="si">{:,.0f}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -689,15 +690,15 @@ in the same way you would specify the number formatting string for
 &lt;IPython.core.display.HTML object&gt;
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.657 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.679 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sensitivity-analysis-py">
 <div class="binder-badge docutils container">
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/nickderobertis/sensitivity/gh-pages?urlpath=lab/tree/notebooks/auto_examples/sensitivity_analysis.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" width="150px" /></a>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/nickderobertis/sensitivity/gh-pages?urlpath=lab/tree/notebooks/auto_examples/sensitivity_analysis.ipynb"><img alt="Launch binder" src="../_images/binder_badge_logo.svg" width="150px" /></a>
 </div>
-<div class="sphx-glr-download docutils container">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/17297e7021efc063eeb8f7d3463c904b/sensitivity_analysis.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">sensitivity_analysis.py</span></code></a></p>
 </div>
-<div class="sphx-glr-download docutils container">
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/0e62e40f5e7aca87815804d5802aeee2/sensitivity_analysis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">sensitivity_analysis.ipynb</span></code></a></p>
 </div>
 </div>
