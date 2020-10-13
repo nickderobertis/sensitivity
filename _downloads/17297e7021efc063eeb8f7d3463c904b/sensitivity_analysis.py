@@ -185,7 +185,14 @@ styled = sa.styled_dfs()
 # options for formatting the outputs:
 # 
 
-sa = SensitivityAnalyzer(sensitivity_dict, my_model, grid_size=3, reverse_colors=True, color_map='coolwarm')
+labels = {
+    'x_1': 'First Input',
+    'x_2': 'Second Input'
+}
+
+sa = SensitivityAnalyzer(
+    sensitivity_dict, my_model, grid_size=3, reverse_colors=True, color_map='coolwarm', labels=labels
+)
 plot = sa.plot()
 
 styled = sa.styled_dfs()

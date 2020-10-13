@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.df &mdash; sensitivity 0.2.4 documentation</title>
+  <title>sensitivity.df &mdash; sensitivity 0.2.5 documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.2.4
+                0.2.5
               </div>
             
           
@@ -181,7 +181,9 @@
 
 
 <div class="viewcode-block" id="sensitivity_df"><a class="viewcode-back" href="../../api/sensitivity.html#sensitivity.df.sensitivity_df">[docs]</a><span class="k">def</span> <span class="nf">sensitivity_df</span><span class="p">(</span><span class="n">sensitivity_values</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-                   <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Result&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">func_kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+                   <span class="n">result_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Result&#39;</span><span class="p">,</span>
+                   <span class="n">labels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                   <span class="o">**</span><span class="n">func_kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creates a DataFrame containing the results of sensitivity analysis.</span>
 
@@ -193,6 +195,8 @@
 <span class="sd">    :param func: Function that accepts arguments with names matching the keys of sensitivity_values, and outputs a</span>
 <span class="sd">        scalar value.</span>
 <span class="sd">    :param result_name: Name for result shown in graph color bar label</span>
+<span class="sd">    :param labels: Optional dictionary where keys are arguments of the function and values are the displayed names</span>
+<span class="sd">        for these arguments in the styled DataFrames and plots</span>
 <span class="sd">    :param func_kwargs: Additional arguments to pass to func, regardless of the sensitivity values picked</span>
 <span class="sd">    :return: a DataFrame containing the results from sensitivity analysis on func</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -208,6 +212,8 @@
         <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">base_param_dict</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
     <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">labels</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">df</span></div>
 

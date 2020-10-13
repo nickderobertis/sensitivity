@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity package &mdash; sensitivity 0.2.4 documentation</title>
+  <title>sensitivity package &mdash; sensitivity 0.2.5 documentation</title>
   
 
   
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                0.2.4
+                0.2.5
               </div>
             
           
@@ -193,7 +193,7 @@ visualizations including gradient DataFrames and hex-bin plots</p>
 <span id="sensitivity-df-module"></span><h2>sensitivity.df module<a class="headerlink" href="#module-sensitivity.df" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="sensitivity.df.sensitivity_df">
-<code class="sig-prename descclassname">sensitivity.df.</code><code class="sig-name descname">sensitivity_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sensitivity_values</span></em>, <em class="sig-param"><span class="n">func</span></em>, <em class="sig-param"><span class="n">result_name</span><span class="o">=</span><span class="default_value">'Result'</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">func_kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sensitivity/df.html#sensitivity_df"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensitivity.df.sensitivity_df" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">sensitivity.df.</code><code class="sig-name descname">sensitivity_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sensitivity_values</span></em>, <em class="sig-param"><span class="n">func</span></em>, <em class="sig-param"><span class="n">result_name</span><span class="o">=</span><span class="default_value">'Result'</span></em>, <em class="sig-param"><span class="n">labels</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">func_kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sensitivity/df.html#sensitivity_df"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensitivity.df.sensitivity_df" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a DataFrame containing the results of sensitivity analysis.</p>
 <p>Runs func with the cartesian product of the possible values for each argument, passed
 in sensitivity_values.</p>
@@ -205,6 +205,8 @@ values to use for that argument.</p></li>
 <li><p><span class="target" id="sensitivity.df.sensitivity_df.params.func"></span><strong>func</strong><a class="paramlink headerlink reference internal" href="#sensitivity.df.sensitivity_df.params.func">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code></a>) – Function that accepts arguments with names matching the keys of sensitivity_values, and outputs a
 scalar value.</p></li>
 <li><p><span class="target" id="sensitivity.df.sensitivity_df.params.result_name"></span><strong>result_name</strong><a class="paramlink headerlink reference internal" href="#sensitivity.df.sensitivity_df.params.result_name">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – Name for result shown in graph color bar label</p></li>
+<li><p><span class="target" id="sensitivity.df.sensitivity_df.params.labels"></span><strong>labels</strong><a class="paramlink headerlink reference internal" href="#sensitivity.df.sensitivity_df.params.labels">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]]) – Optional dictionary where keys are arguments of the function and values are the displayed names
+for these arguments in the styled DataFrames and plots</p></li>
 <li><p><span class="target" id="sensitivity.df.sensitivity_df.params.func_kwargs"></span><strong>func_kwargs</strong><a class="paramlink headerlink reference internal" href="#sensitivity.df.sensitivity_df.params.func_kwargs">¶</a> – Additional arguments to pass to func, regardless of the sensitivity values picked</p></li>
 </ul>
 </dd>
@@ -257,7 +259,7 @@ reverse_colors=True to have green represent low values of result and red for hig
 <span id="sensitivity-main-module"></span><h2>sensitivity.main module<a class="headerlink" href="#module-sensitivity.main" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="sensitivity.main.SensitivityAnalyzer">
-<em class="property">class </em><code class="sig-prename descclassname">sensitivity.main.</code><code class="sig-name descname">SensitivityAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">sensitivity_values</em>, <em class="sig-param">func</em>, <em class="sig-param">result_name='Result'</em>, <em class="sig-param">agg_func=&lt;function mean&gt;</em>, <em class="sig-param">reverse_colors=False</em>, <em class="sig-param">grid_size=8</em>, <em class="sig-param">func_kwargs_dict=None</em>, <em class="sig-param">num_fmt=None</em>, <em class="sig-param">color_map='RdYlGn'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sensitivity/main.html#SensitivityAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensitivity.main.SensitivityAnalyzer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">sensitivity.main.</code><code class="sig-name descname">SensitivityAnalyzer</code><span class="sig-paren">(</span><em class="sig-param">sensitivity_values</em>, <em class="sig-param">func</em>, <em class="sig-param">result_name='Result'</em>, <em class="sig-param">agg_func=&lt;function mean&gt;</em>, <em class="sig-param">reverse_colors=False</em>, <em class="sig-param">grid_size=8</em>, <em class="sig-param">func_kwargs_dict=None</em>, <em class="sig-param">num_fmt=None</em>, <em class="sig-param">color_map='RdYlGn'</em>, <em class="sig-param">labels=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sensitivity/main.html#SensitivityAnalyzer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensitivity.main.SensitivityAnalyzer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Runs sensitivity analysis based on the passed function and possible values for each argument.</p>
 <p>Runs func with the cartesian product of the possible values for each argument, passed
@@ -281,6 +283,8 @@ reverse_colors=True to have green represent low values of result and red for hig
 same style as would be passed to df.style.format, e.g. ‘${:,.2f}’ for USD formatting</p></li>
 <li><p><span class="target" id="sensitivity.main.SensitivityAnalyzer.params.color_map"></span><strong>color_map</strong><a class="paramlink headerlink reference internal" href="#sensitivity.main.SensitivityAnalyzer.params.color_map">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – matplotlib color map, default is RdYlGn (red, yellow, green). See
 <a class="reference external" href="https://matplotlib.org/3.3.2/tutorials/colors/colormaps.html">https://matplotlib.org/3.3.2/tutorials/colors/colormaps.html</a></p></li>
+<li><p><span class="target" id="sensitivity.main.SensitivityAnalyzer.params.labels"></span><strong>labels</strong><a class="paramlink headerlink reference internal" href="#sensitivity.main.SensitivityAnalyzer.params.labels">¶</a> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.9)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]]) – Optional dictionary where keys are arguments of the function and values are the displayed names
+for these arguments in the styled DataFrames and plots</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -319,7 +323,7 @@ same style as would be passed to df.style.format, e.g. ‘${:,.2f}’ for USD fo
 </dl>
 <dl class="py method">
 <dt id="sensitivity.main.SensitivityAnalyzer.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">sensitivity_values</em>, <em class="sig-param">func</em>, <em class="sig-param">result_name='Result'</em>, <em class="sig-param">agg_func=&lt;function mean&gt;</em>, <em class="sig-param">reverse_colors=False</em>, <em class="sig-param">grid_size=8</em>, <em class="sig-param">func_kwargs_dict=None</em>, <em class="sig-param">num_fmt=None</em>, <em class="sig-param">color_map='RdYlGn'</em><span class="sig-paren">)</span><a class="headerlink" href="#sensitivity.main.SensitivityAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">sensitivity_values</em>, <em class="sig-param">func</em>, <em class="sig-param">result_name='Result'</em>, <em class="sig-param">agg_func=&lt;function mean&gt;</em>, <em class="sig-param">reverse_colors=False</em>, <em class="sig-param">grid_size=8</em>, <em class="sig-param">func_kwargs_dict=None</em>, <em class="sig-param">num_fmt=None</em>, <em class="sig-param">color_map='RdYlGn'</em>, <em class="sig-param">labels=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sensitivity.main.SensitivityAnalyzer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -422,6 +426,11 @@ for extra precision.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt id="sensitivity.main.SensitivityAnalyzer.labels">
+<code class="sig-name descname">labels</code><em class="property">: Optional<span class="p">[</span>Dict<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">, </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span><span class="p">]</span></em><em class="property"> = None</em><a class="headerlink" href="#sensitivity.main.SensitivityAnalyzer.labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt id="sensitivity.main.SensitivityAnalyzer.num_fmt">
 <code class="sig-name descname">num_fmt</code><em class="property">: Optional<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)">str</a><span class="p">]</span></em><em class="property"> = None</em><a class="headerlink" href="#sensitivity.main.SensitivityAnalyzer.num_fmt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -452,6 +461,16 @@ for extra precision.</p>
 <dt id="sensitivity.main.SensitivityAnalyzer.reverse_colors">
 <code class="sig-name descname">reverse_colors</code><em class="property">: <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.9)">bool</a></em><em class="property"> = False</em><a class="headerlink" href="#sensitivity.main.SensitivityAnalyzer.reverse_colors" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt id="sensitivity.main.SensitivityAnalyzer.sensitivity_cols">
+<em class="property">property </em><code class="sig-name descname">sensitivity_cols</code><a class="headerlink" href="#sensitivity.main.SensitivityAnalyzer.sensitivity_cols" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt id="sensitivity.main.SensitivityAnalyzer.sensitivity_values">

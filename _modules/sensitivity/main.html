@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.main &mdash; sensitivity 0.2.4 documentation</title>
+  <title>sensitivity.main &mdash; sensitivity 0.2.5 documentation</title>
   
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                0.2.4
+                0.2.5
               </div>
             
           
@@ -203,6 +203,8 @@
 <span class="sd">        same style as would be passed to df.style.format, e.g. &#39;${:,.2f}&#39; for USD formatting</span>
 <span class="sd">    :param color_map: matplotlib color map, default is RdYlGn (red, yellow, green). See</span>
 <span class="sd">        https://matplotlib.org/3.3.2/tutorials/colors/colormaps.html</span>
+<span class="sd">    :param labels: Optional dictionary where keys are arguments of the function and values are the displayed names</span>
+<span class="sd">        for these arguments in the styled DataFrames and plots</span>
 <span class="sd">    :return: Sensitivity analysis hex bin sub plot figure</span>
 
 <span class="sd">    Examples:</span>
@@ -242,6 +244,7 @@
     <span class="n">func_kwargs_dict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">num_fmt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">color_map</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;RdYlGn&#39;</span>
+    <span class="n">labels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_kwargs_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -250,6 +253,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_values</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">,</span>
             <span class="n">result_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">result_name</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span>
             <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">func_kwargs_dict</span>
         <span class="p">)</span>
 
@@ -267,7 +271,7 @@
             <span class="n">color_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color_map</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">config_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_values</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_cols</span>
         <span class="k">return</span> <span class="n">_hex_figure_from_sensitivity_df</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
             <span class="n">sensitivity_cols</span><span class="p">,</span>
@@ -292,7 +296,7 @@
         <span class="p">)</span>
         <span class="n">config_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># Output a single Styler if only one or two variables</span>
-        <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_values</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_cols</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">output</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">sensitivity_cols</span><span class="p">)]</span> <span class="o">=</span> <span class="n">_style_sensitivity_df</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="p">,</span>
@@ -353,7 +357,20 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># get Styler object out of dictionary</span>
 
-        <span class="k">return</span> <span class="n">output</span></div></div>
+        <span class="k">return</span> <span class="n">output</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sensitivity_cols</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sensitivity_values</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span>
+            <span class="n">new_sensitivity_cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sensitivity_cols</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">:</span>
+                    <span class="n">new_sensitivity_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">new_sensitivity_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+            <span class="n">sensitivity_cols</span> <span class="o">=</span> <span class="n">new_sensitivity_cols</span>
+        <span class="k">return</span> <span class="n">sensitivity_cols</span></div>
 
 
 <span class="k">def</span> <span class="nf">_display_header</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
