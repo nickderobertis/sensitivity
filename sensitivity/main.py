@@ -36,6 +36,8 @@ class SensitivityAnalyzer:
         same style as would be passed to df.style.format, e.g. '${:,.2f}' for USD formatting
     :param color_map: matplotlib color map, default is RdYlGn (red, yellow, green). See
         https://matplotlib.org/3.3.2/tutorials/colors/colormaps.html
+    :param labels: Optional dictionary where keys are arguments of the function and values are the displayed names
+        for these arguments in the styled DataFrames and plots
     :return: Sensitivity analysis hex bin sub plot figure
 
     Examples:
@@ -75,6 +77,7 @@ class SensitivityAnalyzer:
     func_kwargs_dict: Optional[Dict[str, Any]] = None
     num_fmt: Optional[str] = None
     color_map: str = 'RdYlGn'
+    labels: Optional[Dict[str, str]] = None
 
     def __post_init__(self):
         if self.func_kwargs_dict is None:
@@ -83,6 +86,7 @@ class SensitivityAnalyzer:
             self.sensitivity_values,
             self.func,
             result_name=self.result_name,
+            labels=self.labels,
             **self.func_kwargs_dict
         )
 
@@ -100,7 +104,7 @@ class SensitivityAnalyzer:
             color_map=self.color_map,
         )
         config_dict.update(**kwargs)
-        sensitivity_cols = list(self.sensitivity_values.keys())
+        sensitivity_cols = self.sensitivity_cols
         return _hex_figure_from_sensitivity_df(
             self.df,
             sensitivity_cols,
@@ -125,7 +129,7 @@ class SensitivityAnalyzer:
         )
         config_dict.update(**kwargs)
         # Output a single Styler if only one or two variables
-        sensitivity_cols = list(self.sensitivity_values.keys())
+        sensitivity_cols = self.sensitivity_cols
         if len(sensitivity_cols) == 1:
             output[tuple(sensitivity_cols)] = _style_sensitivity_df(
                 self.df,
@@ -187,6 +191,19 @@ class SensitivityAnalyzer:
             return list(output.values())[0]  # get Styler object out of dictionary
 
         return output
+
+    @property
+    def sensitivity_cols(self) -> List[str]:
+        sensitivity_cols = list(self.sensitivity_values.keys())
+        if self.labels:
+            new_sensitivity_cols: List[str] = []
+            for col in sensitivity_cols:
+                if col in self.labels:
+                    new_sensitivity_cols.append(self.labels[col])
+                else:
+                    new_sensitivity_cols.append(col)
+            sensitivity_cols = new_sensitivity_cols
+        return sensitivity_cols
 
 
 def _display_header(text: str):

@@ -14,7 +14,9 @@ from sensitivity.colors import _get_color_map
 
 
 def sensitivity_df(sensitivity_values: Dict[str, Any], func: Callable,
-                   result_name: str = 'Result', **func_kwargs) -> pd.DataFrame:
+                   result_name: str = 'Result',
+                   labels: Optional[Dict[str, str]] = None,
+                   **func_kwargs) -> pd.DataFrame:
     """
     Creates a DataFrame containing the results of sensitivity analysis.
 
@@ -26,6 +28,8 @@ def sensitivity_df(sensitivity_values: Dict[str, Any], func: Callable,
     :param func: Function that accepts arguments with names matching the keys of sensitivity_values, and outputs a
         scalar value.
     :param result_name: Name for result shown in graph color bar label
+    :param labels: Optional dictionary where keys are arguments of the function and values are the displayed names
+        for these arguments in the styled DataFrames and plots
     :param func_kwargs: Additional arguments to pass to func, regardless of the sensitivity values picked
     :return: a DataFrame containing the results from sensitivity analysis on func
     """
@@ -41,6 +45,8 @@ def sensitivity_df(sensitivity_values: Dict[str, Any], func: Callable,
         df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
     df.reset_index(drop=True, inplace=True)
     df = df.convert_dtypes()
+    if labels:
+        df.rename(columns=labels, inplace=True)
 
     return df
 
