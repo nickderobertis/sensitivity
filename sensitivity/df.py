@@ -1,3 +1,5 @@
+import operator
+from functools import reduce
 from typing import Dict, Any, Callable, Sequence, Optional
 import itertools
 from copy import deepcopy
@@ -6,6 +8,7 @@ import pandas as pd
 import pd_utils
 from pandas.io.formats.style import Styler
 import numpy as np
+from tqdm import tqdm
 
 from sensitivity.colors import _get_color_map
 
@@ -28,7 +31,8 @@ def sensitivity_df(sensitivity_values: Dict[str, Any], func: Callable,
     """
     sensitivity_cols = list(sensitivity_values.keys())
     df = pd.DataFrame(columns=sensitivity_cols + [result_name])
-    for i in itertools.product(*sensitivity_values.values()):
+    num_cases = reduce(operator.mul, [len(values) for values in sensitivity_values.values()], 1)
+    for i in tqdm(itertools.product(*sensitivity_values.values()), total=num_cases):
         base_param_dict = dict(zip(sensitivity_cols, i))
         param_dict = deepcopy(base_param_dict)
         param_dict.update(func_kwargs)
@@ -65,7 +69,7 @@ def _two_variable_sensitivity_display_df(df: pd.DataFrame, col1: str, col2: str,
 def _style_sensitivity_df(df: pd.DataFrame, col1: str, col2: Optional[str] = None, result_col: str = 'Result',
                           reverse_colors: bool = False,
                           col_subset: Optional[Sequence[str]] = None,
-                          num_fmt: Optional[str] = None) -> Styler:
+                          num_fmt: Optional[str] = None, color_map: str = 'RdYlGn') -> Styler:
     if col2 is not None:
         caption = f'{result_col} - {col1} vs. {col2}'
     else:
@@ -77,7 +81,7 @@ def _style_sensitivity_df(df: pd.DataFrame, col1: str, col2: Optional[str] = Non
     else:
         styler = df.style
 
-    color_str = _get_color_map(reverse_colors=reverse_colors)
+    color_str = _get_color_map(reverse_colors=reverse_colors, color_map=color_map)
     return styler.background_gradient(
         cmap=color_str, subset=col_subset, axis=None
     ).set_caption(caption)

@@ -5,7 +5,7 @@ from pandas.testing import assert_frame_equal
 from sensitivity import SensitivityAnalyzer
 from tests.base import EXPECT_DF_TWO_VALUE, SENSITIVITY_VALUES_TWO_VALUE, add_5_to_values, RESULT_NAME, \
     SENSITIVITY_VALUES_THREE_VALUE, add_10_to_values, EXPECT_DF_THREE_VALUE, assert_styled_matches, \
-    DF_STYLED_NUM_FMT_PATH
+    DF_STYLED_NUM_FMT_PATH, assert_graph_matches, PLOT_THREE_PATH, PLOT_OPTIONS_PATH
 
 
 class TestSensitivityAnalyzer:
@@ -57,7 +57,7 @@ class TestSensitivityAnalyzer:
     def test_create_plot(self):
         sa = self.create_sa()
         result = sa.plot()
-        # TODO [#2]: determine how to test matplotlib figures beyond creation without error
+        assert_graph_matches(result)
 
     def test_create_plot_three_values(self):
         sa = self.create_sa(
@@ -65,3 +65,15 @@ class TestSensitivityAnalyzer:
             func=add_10_to_values,
         )
         result = sa.plot()
+        assert_graph_matches(result, file_path=PLOT_THREE_PATH)
+
+    def test_create_plot_with_options(self):
+        options = dict(
+            grid_size=2, color_map='viridis', reverse_colors=True
+        )
+        sa = self.create_sa(**options)
+        result = sa.plot()
+        assert_graph_matches(result, file_path=PLOT_OPTIONS_PATH)
+        sa = self.create_sa()
+        result = sa.plot(**options)
+        assert_graph_matches(result, file_path=PLOT_OPTIONS_PATH)
