@@ -354,78 +354,78 @@ values:
 .. raw:: html
 
     <style  type="text/css" >
-    #T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row0_col2,#T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row1_col2,#T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row3_col2,#T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row6_col2{
+    #T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow0_col2,#T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow1_col2,#T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow3_col2,#T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow6_col2{
                 background-color:  #a50026;
                 color:  #f1f1f1;
-            }#T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row2_col2{
+            }#T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow2_col2{
                 background-color:  #b71126;
                 color:  #f1f1f1;
-            }#T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row4_col2{
+            }#T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow4_col2{
                 background-color:  #ab0626;
                 color:  #f1f1f1;
-            }#T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row5_col2{
+            }#T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow5_col2{
                 background-color:  #fcaa5f;
                 color:  #000000;
-            }#T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row7_col2{
+            }#T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow7_col2{
                 background-color:  #b50f26;
                 color:  #f1f1f1;
-            }#T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row8_col2{
+            }#T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow8_col2{
                 background-color:  #006837;
                 color:  #f1f1f1;
-            }</style><table id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >x_1</th>        <th class="col_heading level0 col1" >x_2</th>        <th class="col_heading level0 col2" >y</th>    </tr></thead><tbody>
+            }</style><table id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69e" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >x_1</th>        <th class="col_heading level0 col1" >x_2</th>        <th class="col_heading level0 col2" >y</th>    </tr></thead><tbody>
                     <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row0" class="row_heading level0 row0" >0</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row0_col0" class="data row0 col0" >10</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row0_col1" class="data row0 col1" >1</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row0_col2" class="data row0 col2" >10</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row0" class="row_heading level0 row0" >0</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow0_col0" class="data row0 col0" >10</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow0_col1" class="data row0 col1" >1</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow0_col2" class="data row0 col2" >10</td>
                 </tr>
                 <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row1" class="row_heading level0 row1" >1</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row1_col0" class="data row1 col0" >10</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row1_col1" class="data row1 col1" >2</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row1_col2" class="data row1 col2" >100</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row1" class="row_heading level0 row1" >1</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow1_col0" class="data row1 col0" >10</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow1_col1" class="data row1 col1" >2</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow1_col2" class="data row1 col2" >100</td>
                 </tr>
                 <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row2" class="row_heading level0 row2" >2</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row2_col0" class="data row2 col0" >10</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row2_col1" class="data row2 col1" >3</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row2_col2" class="data row2 col2" >1000</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row2" class="row_heading level0 row2" >2</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow2_col0" class="data row2 col0" >10</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow2_col1" class="data row2 col1" >3</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow2_col2" class="data row2 col2" >1000</td>
                 </tr>
                 <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row3" class="row_heading level0 row3" >3</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row3_col0" class="data row3 col0" >20</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row3_col1" class="data row3 col1" >1</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row3_col2" class="data row3 col2" >20</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row3" class="row_heading level0 row3" >3</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow3_col0" class="data row3 col0" >20</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow3_col1" class="data row3 col1" >1</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow3_col2" class="data row3 col2" >20</td>
                 </tr>
                 <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row4" class="row_heading level0 row4" >4</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row4_col0" class="data row4 col0" >20</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row4_col1" class="data row4 col1" >2</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row4_col2" class="data row4 col2" >400</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row4" class="row_heading level0 row4" >4</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow4_col0" class="data row4 col0" >20</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow4_col1" class="data row4 col1" >2</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow4_col2" class="data row4 col2" >400</td>
                 </tr>
                 <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row5" class="row_heading level0 row5" >5</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row5_col0" class="data row5 col0" >20</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row5_col1" class="data row5 col1" >3</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row5_col2" class="data row5 col2" >8000</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row5" class="row_heading level0 row5" >5</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow5_col0" class="data row5 col0" >20</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow5_col1" class="data row5 col1" >3</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow5_col2" class="data row5 col2" >8000</td>
                 </tr>
                 <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row6" class="row_heading level0 row6" >6</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row6_col0" class="data row6 col0" >30</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row6_col1" class="data row6 col1" >1</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row6_col2" class="data row6 col2" >30</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row6" class="row_heading level0 row6" >6</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow6_col0" class="data row6 col0" >30</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow6_col1" class="data row6 col1" >1</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow6_col2" class="data row6 col2" >30</td>
                 </tr>
                 <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row7" class="row_heading level0 row7" >7</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row7_col0" class="data row7 col0" >30</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row7_col1" class="data row7 col1" >2</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row7_col2" class="data row7 col2" >900</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row7" class="row_heading level0 row7" >7</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow7_col0" class="data row7 col0" >30</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow7_col1" class="data row7 col1" >2</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow7_col2" class="data row7 col2" >900</td>
                 </tr>
                 <tr>
-                            <th id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34level0_row8" class="row_heading level0 row8" >8</th>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row8_col0" class="data row8 col0" >30</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row8_col1" class="data row8 col1" >3</td>
-                            <td id="T_b75aa22a_0d9a_11eb_867c_000d3a17fa34row8_col2" class="data row8 col2" >27000</td>
+                            <th id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69elevel0_row8" class="row_heading level0 row8" >8</th>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow8_col0" class="data row8 col0" >30</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow8_col1" class="data row8 col1" >3</td>
+                            <td id="T_d5bf0652_0d9a_11eb_a007_000d3a7ca69erow8_col2" class="data row8 col2" >27000</td>
                 </tr>
         </tbody></table>
     <br />
@@ -496,7 +496,7 @@ you.
 
  .. code-block:: none
 
-      0%|          | 0/9 [00:00<?, ?it/s]    100%|##########| 9/9 [00:00<00:00, 865.06it/s]
+      0%|          | 0/9 [00:00<?, ?it/s]    100%|##########| 9/9 [00:00<00:00, 725.84it/s]
 
 
 
@@ -671,7 +671,7 @@ options for formatting the outputs:
 
  .. code-block:: none
 
-      0%|          | 0/9 [00:00<?, ?it/s]    100%|##########| 9/9 [00:00<00:00, 893.00it/s]
+      0%|          | 0/9 [00:00<?, ?it/s]    100%|##########| 9/9 [00:00<00:00, 804.17it/s]
     <IPython.core.display.HTML object>
     <IPython.core.display.HTML object>
 
@@ -716,7 +716,7 @@ get multiple pair-wise plots and styled ``DataFrame``\ s:
 
  .. code-block:: none
 
-      0%|          | 0/27 [00:00<?, ?it/s]    100%|##########| 27/27 [00:00<00:00, 908.19it/s]
+      0%|          | 0/27 [00:00<?, ?it/s]    100%|##########| 27/27 [00:00<00:00, 785.05it/s]
     <IPython.core.display.HTML object>
     <IPython.core.display.HTML object>
     <IPython.core.display.HTML object>
@@ -751,7 +751,7 @@ the dictionary are a tuple of the column names involved in the
  .. code-block:: none
 
 
-    {('x_1', 'x_2'): <pandas.io.formats.style.Styler object at 0x7faffc669fd0>, ('x_1', 'x_3'): <pandas.io.formats.style.Styler object at 0x7fafe4dc1670>, ('x_2', 'x_3'): <pandas.io.formats.style.Styler object at 0x7fafe4db3df0>}
+    {('x_1', 'x_2'): <pandas.io.formats.style.Styler object at 0x7f4164b80fd0>, ('x_1', 'x_3'): <pandas.io.formats.style.Styler object at 0x7f414d2d8670>, ('x_2', 'x_3'): <pandas.io.formats.style.Styler object at 0x7f414d2cadf0>}
 
 
 
@@ -793,7 +793,7 @@ in the same way you would specify the number formatting string for
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.146 seconds)
+   **Total running time of the script:** ( 0 minutes  2.917 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sensitivity_analysis.py:

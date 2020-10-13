@@ -5,8 +5,8 @@
 
 Computation times
 =================
-**00:03.146** total execution time for **auto_examples** files:
+**00:02.917** total execution time for **auto_examples** files:
 
 +-------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_sensitivity_analysis.py` (``sensitivity_analysis.py``) | 00:03.146 | 0.0 MB |
+| :ref:`sphx_glr_auto_examples_sensitivity_analysis.py` (``sensitivity_analysis.py``) | 00:02.917 | 0.0 MB |
 +-------------------------------------------------------------------------------------+-----------+--------+
