@@ -63,6 +63,7 @@ PACKAGE_INSTALL_REQUIRES = [
     'matplotlib',
     'pd_utils',
     'IPython',
+    'tqdm',
 ]
 
 # Add any third party packages you use in requirements for optional features of your package here
