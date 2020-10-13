@@ -5,7 +5,7 @@ from pandas.testing import assert_frame_equal
 from sensitivity import SensitivityAnalyzer
 from tests.base import EXPECT_DF_TWO_VALUE, SENSITIVITY_VALUES_TWO_VALUE, add_5_to_values, RESULT_NAME, \
     SENSITIVITY_VALUES_THREE_VALUE, add_10_to_values, EXPECT_DF_THREE_VALUE, assert_styled_matches, \
-    DF_STYLED_NUM_FMT_PATH, assert_graph_matches, PLOT_THREE_PATH, PLOT_OPTIONS_PATH
+    DF_STYLED_NUM_FMT_PATH, assert_graph_matches, PLOT_THREE_PATH, PLOT_OPTIONS_PATH, TWO_VALUE_LABELS, DF_LABELED_PATH
 
 
 class TestSensitivityAnalyzer:
@@ -47,6 +47,11 @@ class TestSensitivityAnalyzer:
         assert_styled_matches(result, DF_STYLED_NUM_FMT_PATH)
         assert_styled_matches(result2, DF_STYLED_NUM_FMT_PATH)
 
+    def test_create_styled_dfs_with_labels(self):
+        sa = self.create_sa(labels=TWO_VALUE_LABELS)
+        result = sa.styled_dfs()
+        assert_styled_matches(result, DF_LABELED_PATH)
+
     def test_create_styled_dfs_three_values(self):
         sa = self.create_sa(
             sensitivity_values=SENSITIVITY_VALUES_THREE_VALUE,
@@ -71,9 +76,9 @@ class TestSensitivityAnalyzer:
         options = dict(
             grid_size=2, color_map='viridis', reverse_colors=True
         )
-        sa = self.create_sa(**options)
+        sa = self.create_sa(labels=TWO_VALUE_LABELS, **options)
         result = sa.plot()
         assert_graph_matches(result, file_path=PLOT_OPTIONS_PATH)
-        sa = self.create_sa()
+        sa = self.create_sa(labels=TWO_VALUE_LABELS)
         result = sa.plot(**options)
         assert_graph_matches(result, file_path=PLOT_OPTIONS_PATH)
