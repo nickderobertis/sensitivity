@@ -13,6 +13,7 @@ To get started, look here.
 .. toctree::
    :caption: Tutorial
 
+   overview
    tutorial
    auto_examples/index
 
