@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = sensitivity
+SPHINXPROJ    = py_qs_example
 SOURCEDIR     = source
 BUILDDIR      = build
 
@@ -29,6 +29,7 @@ github:
 	@make cleandoc
 	@./binder_requirements.sh
 	@./nb-examples.sh
+	@./download-logo.sh
 	@make doctest
 	@make autodoc
 	@make html

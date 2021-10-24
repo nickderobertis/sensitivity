@@ -2,7 +2,11 @@
 name: Test, Build and Push Python Package and Docs
 
 on:
-  push: {}
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
   pull_request:
     types: [closed]
 
@@ -54,7 +58,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Static Typing Checks with mypy
       run: |
-        pipenv run mypy $(python name.py)
+        pipenv run mypy $(python directory.py)
     - name: Test with pytest
       run: |
         pipenv run python -m pytest --cov=./ --cov-report=xml
@@ -73,30 +77,11 @@ jobs:
     if: github.ref == 'refs/heads/master'
     needs: test
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 1
-      matrix:
-        python-version: [3.8]
     steps:
-      - uses: actions/checkout@v1
-      - name: Collect TODO
-        uses: nickderobertis/todo-actions@input-commit-branch
-        with:
-          commitBranch: master
-        env:
-          GITHUB_TOKEN: ${{ secrets.gh_token }}
-          TODO_ACTIONS_MONGO_URL: ${{ secrets.TODO_ACTIONS_MONGO_URL }}
-
-
-  updateReleaseDraft:
-    if: github.ref == 'refs/heads/master'
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: toolmantim/release-drafter@v5.2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.gh_token }}
-
+      - uses: "actions/checkout@master"
+      - name: "TODO to Issue"
+        uses: "alstr/todo-to-issue-action@v4.3"
+        id: "todo"
 
   deploy:
     if: github.ref == 'refs/heads/master'
@@ -124,8 +109,10 @@ jobs:
         run: |
           bash output-version.sh
       - name: Install Pipenv
+        if: steps.output_pypi_version.outputs.version != steps.output_build_version.outputs.version
         uses: dschep/install-pipenv-action@v1
       - name: Install dependencies
+        if: steps.output_pypi_version.outputs.version != steps.output_build_version.outputs.version
         run: |
           pipenv sync
           sudo apt-get install pandoc -y
@@ -154,4 +141,14 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.pypi_password }}
+      - name: Publish Github Release
+        if: steps.output_pypi_version.outputs.version != steps.output_build_version.outputs.version
+        uses: release-drafter/release-drafter@v5
+        with:
+          name: "v${{steps.output_build_version.outputs.version}}"
+          tag: "v${{steps.output_build_version.outputs.version}}"
+          version: "v${{steps.output_build_version.outputs.version}}"
+          publish: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.gh_token }}
 

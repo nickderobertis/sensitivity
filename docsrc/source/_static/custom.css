@@ -25,3 +25,8 @@ a.copybtn {
     width: 1.8em;
     height: 1.8em;
 }
+
+/* Make logo smaller */
+img.logo.logo.logo {
+    max-width: 50%;
+}
