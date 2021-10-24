@@ -5,7 +5,6 @@ import itertools
 from copy import deepcopy
 
 import pandas as pd
-import pd_utils
 from pandas.io.formats.style import Styler
 import numpy as np
 from tqdm import tqdm
@@ -61,14 +60,9 @@ def _two_variable_sensitivity_display_df(df: pd.DataFrame, col1: str, col2: str,
     else:
         raise ValueError(f'expected Series or DataFrame, got {df_or_series} of type {type(df_or_series)}')
     selected_df = series.reset_index()
-    wide_df = pd_utils.long_to_wide(
-        selected_df,
-        col1,
-        result_col,
-        colindex=col2,
-        colindex_only=True
-    ).set_index(col1)
 
+    wide_df = selected_df.pivot(index=col1, columns=col2, values=result_col)
+    wide_df.columns.name = None
     return wide_df
 
 

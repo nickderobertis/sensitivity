@@ -23,6 +23,5 @@ pypandoc = "*"
 cruft = "*"
 pandas = "*"
 matplotlib = "*"
-pd_utils = "*"
 jupyter = "*"
-
+bs4 = "*"

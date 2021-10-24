@@ -64,7 +64,6 @@ PACKAGE_INSTALL_REQUIRES = [
     # 'otherpackage>=1,<2'
     'pandas>=1',
     'matplotlib',
-    'pd_utils',
     'IPython',
     'tqdm',
 ]
