@@ -4,7 +4,7 @@
     "context": {
         "cookiecutter": {
             "package_name": "sensitivity",
-            "package_directory": "py_qs_example",
+            "package_directory": "sensitivity",
             "full_name": "Python Sensitivity Analysis",
             "repo_name": "sensitivity",
             "repo_username": "nickderobertis",
