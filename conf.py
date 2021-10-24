@@ -5,7 +5,7 @@
 PACKAGE_NAME = "sensitivity"
 
 # Directory name of package
-PACKAGE_DIRECTORY = "py_qs_example"
+PACKAGE_DIRECTORY = "sensitivity"
 
 # Name of Repo
 REPO_NAME = "sensitivity"
