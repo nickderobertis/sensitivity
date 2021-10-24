@@ -1,6 +1,6 @@
 {
     "template": "https://github.com/nickderobertis/cookiecutter-pypi-sphinx",
-    "commit": "091fcff1b2a425adc13a75fc587fbbb190b7ca3a",
+    "commit": "b7eab35a0360b489172e7b20ac0dcae23a17a446",
     "context": {
         "cookiecutter": {
             "package_name": "sensitivity",
