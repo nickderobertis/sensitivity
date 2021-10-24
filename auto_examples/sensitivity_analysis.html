@@ -4,10 +4,11 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.5 documentation</title>
+  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.6 documentation</title>
   
 
   
@@ -22,13 +23,13 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -37,12 +38,15 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   <link rel="stylesheet" href="../_static/sphinx_paramlinks.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sg_gallery-rendered-html.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="sensitivity" href="../api/modules.html" />
@@ -70,7 +74,7 @@
             
             
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
             
           
@@ -95,7 +99,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Tutorial</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview of the sensitivity package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Getting started with sensitivity</a></li>
@@ -112,7 +116,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">API Documentation</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api/modules.html">sensitivity</a></li>
 </ul>
@@ -184,19 +188,19 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-sensitivity-analysis-py"><span class="std std-ref">here</span></a>     to download the full example code or to run this example in your browser via Binder</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-sensitivity-analysis-py"><span class="std std-ref">here</span></a>
+to download the full example code or to run this example in your browser via Binder</p>
 </div>
-<div class="sphx-glr-example-title section" id="sensitivity-analysis-in-python">
+<section class="sphx-glr-example-title" id="sensitivity-analysis-in-python">
 <span id="sphx-glr-auto-examples-sensitivity-analysis-py"></span><h1>Sensitivity Analysis in Python<a class="headerlink" href="#sensitivity-analysis-in-python" title="Permalink to this headline">¶</a></h1>
 <p>This guide is organized in the following sections:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#What-is-Sensitivity-Analysis%3F">**Sensitivity Analysis
-Theory**</a></p></li>
-<li><p><a class="reference external" href="#How-to-Do-Sensitivity-Analysis-in-Python%3F">**The Hard Way**</a></p></li>
-<li><p><cite>**The Easy Way (use
-``sensitivity`</cite>)** &lt;#Using-The-Sensitivity-Library&gt;`__</p></li>
+<li><p><a class="reference external" href="#What-is-Sensitivity-Analysis%3F">Sensitivity Analysis Theory</a></p></li>
+<li><p><a class="reference external" href="#How-to-Do-Sensitivity-Analysis-in-Python%3F">The Hard Way</a></p></li>
+<li><p><cite>The Easy Way (use
+``sensitivity`</cite>) &lt;#Using-The-Sensitivity-Library&gt;`__</p></li>
 </ul>
-<div class="section" id="what-is-sensitivity-analysis">
+<section id="what-is-sensitivity-analysis">
 <h2>What is Sensitivity Analysis?<a class="headerlink" href="#what-is-sensitivity-analysis" title="Permalink to this headline">¶</a></h2>
 <p>Sensitivity Analysis is the process of passing different inputs to a
 model to see how the outputs change. It differs from Monte Carlo
@@ -228,8 +232,8 @@ set of inputs.</p>
 <li><p>Store the values of <span class="math notranslate nohighlight">\(X_i\)</span> mapped to <span class="math notranslate nohighlight">\(y_i\)</span></p></li>
 <li><p>Visualize <span class="math notranslate nohighlight">\(y_i\)</span> versus <span class="math notranslate nohighlight">\(X_i\)</span></p></li>
 </ul>
-</div>
-<div class="section" id="how-to-do-sensitivity-analysis-in-python">
+</section>
+<section id="how-to-do-sensitivity-analysis-in-python">
 <h2>How to Do Sensitivity Analysis in Python?<a class="headerlink" href="#how-to-do-sensitivity-analysis-in-python" title="Permalink to this headline">¶</a></h2>
 <p>Abstract algorithms are great, but let’s see the code that can make this
 happen. First we’ll import pandas to use later and define a function
@@ -317,6 +321,7 @@ format through a <code class="docutils literal notranslate"><span class="pre">Da
 <span class="n">df</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -398,99 +403,119 @@ format through a <code class="docutils literal notranslate"><span class="pre">Da
   </tbody>
 </table>
 </div>
+</div>
 <br />
 <br /><p>We can add some styling to the DataFrame to highlight the high and low
 values:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<style  type="text/css" >
-#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row0_col2,#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row1_col2,#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row3_col2,#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row6_col2{
-            background-color:  #a50026;
-            color:  #f1f1f1;
-        }#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row2_col2{
-            background-color:  #b71126;
-            color:  #f1f1f1;
-        }#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row4_col2{
-            background-color:  #ab0626;
-            color:  #f1f1f1;
-        }#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row5_col2{
-            background-color:  #fcaa5f;
-            color:  #000000;
-        }#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row7_col2{
-            background-color:  #b50f26;
-            color:  #f1f1f1;
-        }#T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row8_col2{
-            background-color:  #006837;
-            color:  #f1f1f1;
-        }</style><table id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >x_1</th>        <th class="col_heading level0 col1" >x_2</th>        <th class="col_heading level0 col2" >y</th>    </tr></thead><tbody>
-                <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row0" class="row_heading level0 row0" >0</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row0_col0" class="data row0 col0" >10</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row0_col1" class="data row0 col1" >1</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row0_col2" class="data row0 col2" >10</td>
-            </tr>
-            <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row1" class="row_heading level0 row1" >1</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row1_col0" class="data row1 col0" >10</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row1_col1" class="data row1 col1" >2</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row1_col2" class="data row1 col2" >100</td>
-            </tr>
-            <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row2" class="row_heading level0 row2" >2</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row2_col0" class="data row2 col0" >10</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row2_col1" class="data row2 col1" >3</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row2_col2" class="data row2 col2" >1000</td>
-            </tr>
-            <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row3" class="row_heading level0 row3" >3</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row3_col0" class="data row3 col0" >20</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row3_col1" class="data row3 col1" >1</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row3_col2" class="data row3 col2" >20</td>
-            </tr>
-            <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row4" class="row_heading level0 row4" >4</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row4_col0" class="data row4 col0" >20</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row4_col1" class="data row4 col1" >2</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row4_col2" class="data row4 col2" >400</td>
-            </tr>
-            <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row5" class="row_heading level0 row5" >5</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row5_col0" class="data row5 col0" >20</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row5_col1" class="data row5 col1" >3</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row5_col2" class="data row5 col2" >8000</td>
-            </tr>
-            <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row6" class="row_heading level0 row6" >6</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row6_col0" class="data row6 col0" >30</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row6_col1" class="data row6 col1" >1</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row6_col2" class="data row6 col2" >30</td>
-            </tr>
-            <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row7" class="row_heading level0 row7" >7</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row7_col0" class="data row7 col0" >30</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row7_col1" class="data row7 col1" >2</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row7_col2" class="data row7 col2" >900</td>
-            </tr>
-            <tr>
-                        <th id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53level0_row8" class="row_heading level0 row8" >8</th>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row8_col0" class="data row8 col0" >30</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row8_col1" class="data row8 col1" >3</td>
-                        <td id="T_52f6bcf6_2ab9_11eb_9457_000d3ad92f53row8_col2" class="data row8 col2" >27000</td>
-            </tr>
-    </tbody></table>
+<div class="output_subarea output_html rendered_html output_result">
+<style type="text/css">
+#T_1d02d_row0_col2, #T_1d02d_row1_col2, #T_1d02d_row3_col2, #T_1d02d_row6_col2 {
+  background-color: #a50026;
+  color: #f1f1f1;
+}
+#T_1d02d_row2_col2 {
+  background-color: #b71126;
+  color: #f1f1f1;
+}
+#T_1d02d_row4_col2 {
+  background-color: #ab0626;
+  color: #f1f1f1;
+}
+#T_1d02d_row5_col2 {
+  background-color: #fcaa5f;
+  color: #000000;
+}
+#T_1d02d_row7_col2 {
+  background-color: #b50f26;
+  color: #f1f1f1;
+}
+#T_1d02d_row8_col2 {
+  background-color: #006837;
+  color: #f1f1f1;
+}
+</style>
+<table id="T_1d02d_">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th class="col_heading level0 col0" >x_1</th>
+      <th class="col_heading level0 col1" >x_2</th>
+      <th class="col_heading level0 col2" >y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_1d02d_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_1d02d_row0_col0" class="data row0 col0" >10</td>
+      <td id="T_1d02d_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_1d02d_row0_col2" class="data row0 col2" >10</td>
+    </tr>
+    <tr>
+      <th id="T_1d02d_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_1d02d_row1_col0" class="data row1 col0" >10</td>
+      <td id="T_1d02d_row1_col1" class="data row1 col1" >2</td>
+      <td id="T_1d02d_row1_col2" class="data row1 col2" >100</td>
+    </tr>
+    <tr>
+      <th id="T_1d02d_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_1d02d_row2_col0" class="data row2 col0" >10</td>
+      <td id="T_1d02d_row2_col1" class="data row2 col1" >3</td>
+      <td id="T_1d02d_row2_col2" class="data row2 col2" >1000</td>
+    </tr>
+    <tr>
+      <th id="T_1d02d_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_1d02d_row3_col0" class="data row3 col0" >20</td>
+      <td id="T_1d02d_row3_col1" class="data row3 col1" >1</td>
+      <td id="T_1d02d_row3_col2" class="data row3 col2" >20</td>
+    </tr>
+    <tr>
+      <th id="T_1d02d_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_1d02d_row4_col0" class="data row4 col0" >20</td>
+      <td id="T_1d02d_row4_col1" class="data row4 col1" >2</td>
+      <td id="T_1d02d_row4_col2" class="data row4 col2" >400</td>
+    </tr>
+    <tr>
+      <th id="T_1d02d_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_1d02d_row5_col0" class="data row5 col0" >20</td>
+      <td id="T_1d02d_row5_col1" class="data row5 col1" >3</td>
+      <td id="T_1d02d_row5_col2" class="data row5 col2" >8000</td>
+    </tr>
+    <tr>
+      <th id="T_1d02d_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_1d02d_row6_col0" class="data row6 col0" >30</td>
+      <td id="T_1d02d_row6_col1" class="data row6 col1" >1</td>
+      <td id="T_1d02d_row6_col2" class="data row6 col2" >30</td>
+    </tr>
+    <tr>
+      <th id="T_1d02d_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_1d02d_row7_col0" class="data row7 col0" >30</td>
+      <td id="T_1d02d_row7_col1" class="data row7 col1" >2</td>
+      <td id="T_1d02d_row7_col2" class="data row7 col2" >900</td>
+    </tr>
+    <tr>
+      <th id="T_1d02d_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_1d02d_row8_col0" class="data row8 col0" >30</td>
+      <td id="T_1d02d_row8_col1" class="data row8 col1" >3</td>
+      <td id="T_1d02d_row8_col2" class="data row8 col2" >27000</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
 <br />
 <br /><p>We can plot the result as well with a hex-bin plot.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="o">=</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="o">=</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="sensitivity analysis" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_001.png" />
-<p class="sphx-glr-script-out">Out:</p>
+<img src="../_images/sphx_glr_sensitivity_analysis_001.png" srcset="../_images/sphx_glr_sensitivity_analysis_001.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x_1&#39;, ylabel=&#39;x_2&#39;&gt;
 </pre></div>
 </div>
-</div>
-<div class="section" id="using-the-sensitivity-library">
+</section>
+<section id="using-the-sensitivity-library">
 <h2>Using The Sensitivity Library<a class="headerlink" href="#using-the-sensitivity-library" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">sensitivity</span></code> package is designed around making this whole process
 easier. It is also able to handle more than two varying inputs with
@@ -511,7 +536,7 @@ you.</p>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/9 [00:00&lt;?, ?it/s]
-100%|##########| 9/9 [00:00&lt;00:00, 912.75it/s]
+100%|##########| 9/9 [00:00&lt;00:00, 1127.77it/s]
 </pre></div>
 </div>
 <p>Now that we have created the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> object, it has
@@ -520,6 +545,7 @@ results at <code class="docutils literal notranslate"><span class="pre">.df</spa
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sa</span><span class="o">.</span><span class="n">df</span>
 </pre></div>
 </div>
+<div class="output_subarea output_html rendered_html output_result">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -601,15 +627,15 @@ results at <code class="docutils literal notranslate"><span class="pre">.df</spa
   </tbody>
 </table>
 </div>
+</div>
 <br />
 <br /><p>We can also get the hex-bin plot and styled DataFrame:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
 <span class="n">styled</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="sensitivity analysis" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_002.png" />
-<p class="sphx-glr-script-out">Out:</p>
+<img src="../_images/sphx_glr_sensitivity_analysis_002.png" srcset="../_images/sphx_glr_sensitivity_analysis_002.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
 </pre></div>
@@ -624,15 +650,14 @@ options for formatting the outputs:</p>
 <span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span>
     <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <span class="n">my_model</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">reverse_colors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_map</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">labels</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">labels</span></a>
 <span class="p">)</span>
-<a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
 <span class="n">styled</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="sensitivity analysis" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_003.png" />
-<p class="sphx-glr-script-out">Out:</p>
+<img src="../_images/sphx_glr_sensitivity_analysis_003.png" srcset="../_images/sphx_glr_sensitivity_analysis_003.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/9 [00:00&lt;?, ?it/s]
-100%|##########| 9/9 [00:00&lt;00:00, 942.40it/s]
+100%|##########| 9/9 [00:00&lt;00:00, 1192.77it/s]
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
 </pre></div>
@@ -650,15 +675,14 @@ get multiple pair-wise plots and styled <code class="docutils literal notranslat
 
 <span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <span class="n">my_model_2</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
-<a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
 <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="sensitivity analysis" class="sphx-glr-single-img" src="../_images/sphx_glr_sensitivity_analysis_004.png" />
-<p class="sphx-glr-script-out">Out:</p>
+<img src="../_images/sphx_glr_sensitivity_analysis_004.png" srcset="../_images/sphx_glr_sensitivity_analysis_004.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/27 [00:00&lt;?, ?it/s]
-100%|##########| 27/27 [00:00&lt;00:00, 961.28it/s]
+100%|##########| 27/27 [00:00&lt;00:00, 1195.41it/s]
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
@@ -675,10 +699,10 @@ the dictionary are a tuple of the column names involved in the
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fa791755ca0&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fa779ea5b50&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fa779e9e310&gt;}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f787ebc50d0&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f787f005430&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f787ee32dc0&gt;}
 </pre></div>
 </div>
-<div class="section" id="adding-additional-styling-to-styled-dataframes">
+<section id="adding-additional-styling-to-styled-dataframes">
 <h3>Adding Additional Styling to Styled <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code><a class="headerlink" href="#adding-additional-styling-to-styled-dataframes" title="Permalink to this headline">¶</a></h3>
 <p>It could be desired to pass some number or other formatting to the
 styled <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>. This can be done with the <code class="docutils literal notranslate"><span class="pre">num_fmt</span></code> argument,
@@ -698,7 +722,7 @@ in the same way you would specify the number formatting string for
 &lt;IPython.core.display.HTML object&gt;
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.020 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.028 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sensitivity-analysis-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/nickderobertis/sensitivity/gh-pages?urlpath=lab/tree/notebooks/auto_examples/sensitivity_analysis.ipynb"><img alt="Launch binder" src="../_images/binder_badge_logo.svg" width="150px" /></a>
@@ -711,9 +735,9 @@ in the same way you would specify the number formatting string for
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -736,7 +760,7 @@ in the same way you would specify the number formatting string for
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, Nick DeRobertis
+        &copy; Copyright 2021, Nick DeRobertis
 
     </p>
   </div>

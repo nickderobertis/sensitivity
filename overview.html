@@ -4,10 +4,11 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview of the sensitivity package &mdash; sensitivity 0.2.5 documentation</title>
+  <title>Overview of the sensitivity package &mdash; sensitivity 0.2.6 documentation</title>
   
 
   
@@ -22,13 +23,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -37,12 +37,15 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   <link rel="stylesheet" href="_static/sphinx_paramlinks.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sg_gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sg_gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sg_gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sg_gallery-rendered-html.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Getting started with sensitivity" href="tutorial.html" />
@@ -70,7 +73,7 @@
             
             
               <div class="version">
-                0.2.5
+                0.2.6
               </div>
             
           
@@ -95,7 +98,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Tutorial</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overview of the sensitivity package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
@@ -106,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Getting started with sensitivity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Example Usage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Documentation</span></p>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/modules.html">sensitivity</a></li>
 </ul>
@@ -174,9 +177,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="overview-of-the-sensitivity-package">
+  <section id="overview-of-the-sensitivity-package">
 <h1>Overview of the sensitivity package<a class="headerlink" href="#overview-of-the-sensitivity-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="purpose">
+<section id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
 <p>It is common in financial modeling to conduct a sensitivity
 analysis on the model. This analysis runs the model changing
@@ -187,8 +190,8 @@ especially around visualization of the results.</p>
 <p>While it was developed for financial modeling, it can be used with
 any function to understand how changing the inputs of the function
 affect the outputs.</p>
-</div>
-<div class="section" id="what-does-it-do">
+</section>
+<section id="what-does-it-do">
 <h2>What Does it Do?<a class="headerlink" href="#what-does-it-do" title="Permalink to this headline">¶</a></h2>
 <p>The main logic of the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> is replicating
 a nested loop over the input values. Let’s look at the basic
@@ -228,8 +231,8 @@ example of how to use <code class="docutils literal notranslate"><span class="pr
 </div>
 <p>Which handles generating hexbin plots and DataFrames with
 a background gradient to signify high or low values.</p>
-</div>
-<div class="section" id="what-happens-with-more-inputs">
+</section>
+<section id="what-happens-with-more-inputs">
 <h2>What Happens with More Inputs?<a class="headerlink" href="#what-happens-with-more-inputs" title="Permalink to this headline">¶</a></h2>
 <p>The hexbin plots and styled DataFrames can only display two
 inputs changing at once, but it is possible to run
@@ -247,8 +250,8 @@ by default will take the mean, but it exposes the <code class="docutils literal 
 argument which should accept a list of values and return a single
 value, so the user can pick any aggregation such as <code class="docutils literal notranslate"><span class="pre">numpy</span></code>’s
 <code class="docutils literal notranslate"><span class="pre">median</span></code> or <code class="docutils literal notranslate"><span class="pre">std</span></code> function.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -271,7 +274,7 @@ value, so the user can pick any aggregation such as <code class="docutils litera
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, Nick DeRobertis
+        &copy; Copyright 2021, Nick DeRobertis
 
     </p>
   </div>

@@ -4,11 +4,10 @@ Sensitivity Analysis in Python
 
 This guide is organized in the following sections:
 
--  `**Sensitivity Analysis
-   Theory** <#What-is-Sensitivity-Analysis%3F>`__
--  `**The Hard Way** <#How-to-Do-Sensitivity-Analysis-in-Python%3F>`__
--  `**The Easy Way (use
-   ``sensitivity``)** <#Using-The-Sensitivity-Library>`__
+-  `Sensitivity Analysis Theory <#What-is-Sensitivity-Analysis%3F>`__
+-  `The Hard Way <#How-to-Do-Sensitivity-Analysis-in-Python%3F>`__
+-  `The Easy Way (use
+   ``sensitivity``) <#Using-The-Sensitivity-Library>`__
 
 What is Sensitivity Analysis?
 -----------------------------
@@ -49,8 +48,8 @@ Follow the following steps:
 How to Do Sensitivity Analysis in Python?
 -----------------------------------------
 
-Abstract algorithms are great, but let's see the code that can make this
-happen. First we'll import pandas to use later and define a function
+Abstract algorithms are great, but let’s see the code that can make this
+happen. First we’ll import pandas to use later and define a function
 which represents the model:
 
 """
@@ -73,7 +72,7 @@ y
 
 
 ######################################################################
-# Now let's go step by step through the above algorithm. First let's
+# Now let’s go step by step through the above algorithm. First let’s
 # choose a set of values for each :math:`x_i`:
 # 
 
