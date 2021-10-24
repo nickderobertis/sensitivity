@@ -4,6 +4,7 @@ from io import BytesIO
 from pathlib import Path
 
 import pandas as pd
+from bs4 import BeautifulSoup
 from pandas.io.formats.style import Styler
 import matplotlib.pyplot as plt
 
@@ -68,12 +69,17 @@ def assert_styled_matches(styler: Styler, file_path: str = DF_STYLED_PATH, gener
     compare_html = styler.set_uuid(DF_STYLE_UUID).render()
 
     if generate:
-        Path(file_path).write_text(compare_html)
+        Path(file_path).write_text(_prettify_html(compare_html))
 
     with open(file_path, 'r') as f:
         expect_html = f.read()
 
-    assert compare_html == expect_html
+    assert _prettify_html(compare_html) == _prettify_html(expect_html)
+
+
+def _prettify_html(html: str) -> str:
+    soup = BeautifulSoup(html)
+    return soup.prettify()
 
 
 def assert_graph_matches(fig: plt.Figure, file_path: Path = DEFAULT_PLOT_PATH, generate: bool = False):
