@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from pandas.io.formats.style import Styler
 import matplotlib.pyplot as plt
 
-INPUT_FILES_FOLDER = Path(os.path.join('tests', 'input_data'))
+INPUT_FILES_FOLDER = Path(__file__).parent / "input_data"
 DF_STYLED_PATH = os.path.join(INPUT_FILES_FOLDER, 'df_styled.html')
 DF_LABELED_PATH = os.path.join(INPUT_FILES_FOLDER, 'df_labeled.html')
 DF_STYLED_NUM_FMT_PATH = os.path.join(INPUT_FILES_FOLDER, 'df_styled_num_fmt.html')
