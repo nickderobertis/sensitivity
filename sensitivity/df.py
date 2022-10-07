@@ -63,6 +63,13 @@ def _two_variable_sensitivity_display_df(df: pd.DataFrame, col1: str, col2: str,
 
     wide_df = selected_df.pivot(index=col1, columns=col2, values=result_col)
     wide_df.columns.name = None
+
+    # Fix for an odd Pandas bug introduced in 1.5
+    # Even though this is effectively a no-op, without this was getting the following error
+    # once it would try to do .style.render() on the returned DataFrame
+    # IndexError: Boolean index has wrong length: 1 instead of 2
+    wide_df = wide_df.reset_index().set_index(col1)
+
     return wide_df
 
 
