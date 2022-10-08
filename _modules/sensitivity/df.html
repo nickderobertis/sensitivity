@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sensitivity.df &mdash; sensitivity 0.2.6 documentation</title>
+  <title>sensitivity.df &mdash; sensitivity 0.2.7 documentation</title>
   
 
   
@@ -25,7 +25,9 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
     
@@ -70,7 +72,7 @@
             
             
               <div class="version">
-                0.2.6
+                0.2.7
               </div>
             
           
@@ -233,6 +235,13 @@
 
     <span class="n">wide_df</span> <span class="o">=</span> <span class="n">selected_df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">col1</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">col2</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">result_col</span><span class="p">)</span>
     <span class="n">wide_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Fix for an odd Pandas bug introduced in 1.5</span>
+    <span class="c1"># Even though this is effectively a no-op, without this was getting the following error</span>
+    <span class="c1"># once it would try to do .style.render() on the returned DataFrame</span>
+    <span class="c1"># IndexError: Boolean index has wrong length: 1 instead of 2</span>
+    <span class="n">wide_df</span> <span class="o">=</span> <span class="n">wide_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">col1</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">wide_df</span>
 
 
@@ -269,7 +278,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2021, Nick DeRobertis
+        &copy; Copyright 2022, Nick DeRobertis
 
     </p>
   </div>

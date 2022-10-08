@@ -4,11 +4,11 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview of the sensitivity package &mdash; sensitivity 0.2.6 documentation</title>
+  <title>Overview of the sensitivity package &mdash; sensitivity 0.2.7 documentation</title>
   
 
   
@@ -26,7 +26,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
     
@@ -73,7 +75,7 @@
             
             
               <div class="version">
-                0.2.6
+                0.2.7
               </div>
             
           
@@ -178,9 +180,9 @@
            <div itemprop="articleBody">
             
   <section id="overview-of-the-sensitivity-package">
-<h1>Overview of the sensitivity package<a class="headerlink" href="#overview-of-the-sensitivity-package" title="Permalink to this headline">¶</a></h1>
+<h1>Overview of the sensitivity package<a class="headerlink" href="#overview-of-the-sensitivity-package" title="Permalink to this heading">¶</a></h1>
 <section id="purpose">
-<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this heading">¶</a></h2>
 <p>It is common in financial modeling to conduct a sensitivity
 analysis on the model. This analysis runs the model changing
 the inputs values and collecting the outputs. Then the modeler
@@ -192,7 +194,7 @@ any function to understand how changing the inputs of the function
 affect the outputs.</p>
 </section>
 <section id="what-does-it-do">
-<h2>What Does it Do?<a class="headerlink" href="#what-does-it-do" title="Permalink to this headline">¶</a></h2>
+<h2>What Does it Do?<a class="headerlink" href="#what-does-it-do" title="Permalink to this heading">¶</a></h2>
 <p>The main logic of the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> is replicating
 a nested loop over the input values. Let’s look at the basic
 example of how to use <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code>:</p>
@@ -233,7 +235,7 @@ example of how to use <code class="docutils literal notranslate"><span class="pr
 a background gradient to signify high or low values.</p>
 </section>
 <section id="what-happens-with-more-inputs">
-<h2>What Happens with More Inputs?<a class="headerlink" href="#what-happens-with-more-inputs" title="Permalink to this headline">¶</a></h2>
+<h2>What Happens with More Inputs?<a class="headerlink" href="#what-happens-with-more-inputs" title="Permalink to this heading">¶</a></h2>
 <p>The hexbin plots and styled DataFrames can only display two
 inputs changing at once, but it is possible to run
 <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> with as many inputs as you want.</p>
@@ -274,7 +276,7 @@ value, so the user can pick any aggregation such as <code class="docutils litera
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2021, Nick DeRobertis
+        &copy; Copyright 2022, Nick DeRobertis
 
     </p>
   </div>

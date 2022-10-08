@@ -1,9 +1,5 @@
 :orphan:
 
-
-
-.. _sphx_glr_auto_examples:
-
 Example Usage
 ==================
 
@@ -12,14 +8,25 @@ See below for some examples of usage.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="This guide is organized in the following sections:">
 
 .. only:: html
 
- .. figure:: /auto_examples/images/thumb/sphx_glr_sensitivity_analysis_thumb.png
-     :alt: Sensitivity Analysis in Python
+  .. image:: /auto_examples/images/thumb/sphx_glr_sensitivity_analysis_thumb.png
+    :alt: Sensitivity Analysis in Python
 
-     :ref:`sphx_glr_auto_examples_sensitivity_analysis.py`
+  :ref:`sphx_glr_auto_examples_sensitivity_analysis.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Sensitivity Analysis in Python</div>
+    </div>
+
 
 .. raw:: html
 
@@ -30,27 +37,19 @@ See below for some examples of usage.
    :hidden:
 
    /auto_examples/sensitivity_analysis
-.. raw:: html
-
-    <div class="sphx-glr-clear"></div>
 
 
+.. only:: html
 
-.. only :: html
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
 
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-gallery
+    .. container:: sphx-glr-download sphx-glr-download-python
 
+      :download:`Download all examples in Python source code: auto_examples_python.zip </auto_examples/auto_examples_python.zip>`
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-    :download:`Download all examples in Python source code: auto_examples_python.zip </auto_examples/auto_examples_python.zip>`
-
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-    :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </auto_examples/auto_examples_jupyter.zip>`
+      :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip </auto_examples/auto_examples_jupyter.zip>`
 
 
 .. only:: html

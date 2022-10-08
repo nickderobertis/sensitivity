@@ -112,8 +112,6 @@ We can run this model once to get a single result:
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
 
@@ -167,8 +165,6 @@ combination of the inputs.
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
     10 1
@@ -205,8 +201,6 @@ Now we have each :math:`X_i`, we need to calculate :math:`y_i = f(X_i)`:
 
 
 .. rst-class:: sphx-glr-script-out
-
- Out:
 
  .. code-block:: none
 
@@ -246,8 +240,6 @@ Now store the values of :math:`X_i` mapped to :math:`y_i`:
 
 
 .. rst-class:: sphx-glr-script-out
-
- Out:
 
  .. code-block:: none
 
@@ -387,94 +379,94 @@ values:
 
     <div class="output_subarea output_html rendered_html output_result">
     <style type="text/css">
-    #T_87b12_row0_col2, #T_87b12_row1_col2, #T_87b12_row3_col2, #T_87b12_row6_col2 {
+    #T_9536f_row0_col2, #T_9536f_row1_col2, #T_9536f_row3_col2, #T_9536f_row6_col2 {
       background-color: #a50026;
       color: #f1f1f1;
     }
-    #T_87b12_row2_col2 {
+    #T_9536f_row2_col2 {
       background-color: #b71126;
       color: #f1f1f1;
     }
-    #T_87b12_row4_col2 {
+    #T_9536f_row4_col2 {
       background-color: #ab0626;
       color: #f1f1f1;
     }
-    #T_87b12_row5_col2 {
+    #T_9536f_row5_col2 {
       background-color: #fcaa5f;
       color: #000000;
     }
-    #T_87b12_row7_col2 {
+    #T_9536f_row7_col2 {
       background-color: #b50f26;
       color: #f1f1f1;
     }
-    #T_87b12_row8_col2 {
+    #T_9536f_row8_col2 {
       background-color: #006837;
       color: #f1f1f1;
     }
     </style>
-    <table id="T_87b12_">
+    <table id="T_9536f">
       <thead>
         <tr>
           <th class="blank level0" >&nbsp;</th>
-          <th class="col_heading level0 col0" >x_1</th>
-          <th class="col_heading level0 col1" >x_2</th>
-          <th class="col_heading level0 col2" >y</th>
+          <th id="T_9536f_level0_col0" class="col_heading level0 col0" >x_1</th>
+          <th id="T_9536f_level0_col1" class="col_heading level0 col1" >x_2</th>
+          <th id="T_9536f_level0_col2" class="col_heading level0 col2" >y</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th id="T_87b12_level0_row0" class="row_heading level0 row0" >0</th>
-          <td id="T_87b12_row0_col0" class="data row0 col0" >10</td>
-          <td id="T_87b12_row0_col1" class="data row0 col1" >1</td>
-          <td id="T_87b12_row0_col2" class="data row0 col2" >10</td>
+          <th id="T_9536f_level0_row0" class="row_heading level0 row0" >0</th>
+          <td id="T_9536f_row0_col0" class="data row0 col0" >10</td>
+          <td id="T_9536f_row0_col1" class="data row0 col1" >1</td>
+          <td id="T_9536f_row0_col2" class="data row0 col2" >10</td>
         </tr>
         <tr>
-          <th id="T_87b12_level0_row1" class="row_heading level0 row1" >1</th>
-          <td id="T_87b12_row1_col0" class="data row1 col0" >10</td>
-          <td id="T_87b12_row1_col1" class="data row1 col1" >2</td>
-          <td id="T_87b12_row1_col2" class="data row1 col2" >100</td>
+          <th id="T_9536f_level0_row1" class="row_heading level0 row1" >1</th>
+          <td id="T_9536f_row1_col0" class="data row1 col0" >10</td>
+          <td id="T_9536f_row1_col1" class="data row1 col1" >2</td>
+          <td id="T_9536f_row1_col2" class="data row1 col2" >100</td>
         </tr>
         <tr>
-          <th id="T_87b12_level0_row2" class="row_heading level0 row2" >2</th>
-          <td id="T_87b12_row2_col0" class="data row2 col0" >10</td>
-          <td id="T_87b12_row2_col1" class="data row2 col1" >3</td>
-          <td id="T_87b12_row2_col2" class="data row2 col2" >1000</td>
+          <th id="T_9536f_level0_row2" class="row_heading level0 row2" >2</th>
+          <td id="T_9536f_row2_col0" class="data row2 col0" >10</td>
+          <td id="T_9536f_row2_col1" class="data row2 col1" >3</td>
+          <td id="T_9536f_row2_col2" class="data row2 col2" >1000</td>
         </tr>
         <tr>
-          <th id="T_87b12_level0_row3" class="row_heading level0 row3" >3</th>
-          <td id="T_87b12_row3_col0" class="data row3 col0" >20</td>
-          <td id="T_87b12_row3_col1" class="data row3 col1" >1</td>
-          <td id="T_87b12_row3_col2" class="data row3 col2" >20</td>
+          <th id="T_9536f_level0_row3" class="row_heading level0 row3" >3</th>
+          <td id="T_9536f_row3_col0" class="data row3 col0" >20</td>
+          <td id="T_9536f_row3_col1" class="data row3 col1" >1</td>
+          <td id="T_9536f_row3_col2" class="data row3 col2" >20</td>
         </tr>
         <tr>
-          <th id="T_87b12_level0_row4" class="row_heading level0 row4" >4</th>
-          <td id="T_87b12_row4_col0" class="data row4 col0" >20</td>
-          <td id="T_87b12_row4_col1" class="data row4 col1" >2</td>
-          <td id="T_87b12_row4_col2" class="data row4 col2" >400</td>
+          <th id="T_9536f_level0_row4" class="row_heading level0 row4" >4</th>
+          <td id="T_9536f_row4_col0" class="data row4 col0" >20</td>
+          <td id="T_9536f_row4_col1" class="data row4 col1" >2</td>
+          <td id="T_9536f_row4_col2" class="data row4 col2" >400</td>
         </tr>
         <tr>
-          <th id="T_87b12_level0_row5" class="row_heading level0 row5" >5</th>
-          <td id="T_87b12_row5_col0" class="data row5 col0" >20</td>
-          <td id="T_87b12_row5_col1" class="data row5 col1" >3</td>
-          <td id="T_87b12_row5_col2" class="data row5 col2" >8000</td>
+          <th id="T_9536f_level0_row5" class="row_heading level0 row5" >5</th>
+          <td id="T_9536f_row5_col0" class="data row5 col0" >20</td>
+          <td id="T_9536f_row5_col1" class="data row5 col1" >3</td>
+          <td id="T_9536f_row5_col2" class="data row5 col2" >8000</td>
         </tr>
         <tr>
-          <th id="T_87b12_level0_row6" class="row_heading level0 row6" >6</th>
-          <td id="T_87b12_row6_col0" class="data row6 col0" >30</td>
-          <td id="T_87b12_row6_col1" class="data row6 col1" >1</td>
-          <td id="T_87b12_row6_col2" class="data row6 col2" >30</td>
+          <th id="T_9536f_level0_row6" class="row_heading level0 row6" >6</th>
+          <td id="T_9536f_row6_col0" class="data row6 col0" >30</td>
+          <td id="T_9536f_row6_col1" class="data row6 col1" >1</td>
+          <td id="T_9536f_row6_col2" class="data row6 col2" >30</td>
         </tr>
         <tr>
-          <th id="T_87b12_level0_row7" class="row_heading level0 row7" >7</th>
-          <td id="T_87b12_row7_col0" class="data row7 col0" >30</td>
-          <td id="T_87b12_row7_col1" class="data row7 col1" >2</td>
-          <td id="T_87b12_row7_col2" class="data row7 col2" >900</td>
+          <th id="T_9536f_level0_row7" class="row_heading level0 row7" >7</th>
+          <td id="T_9536f_row7_col0" class="data row7 col0" >30</td>
+          <td id="T_9536f_row7_col1" class="data row7 col1" >2</td>
+          <td id="T_9536f_row7_col2" class="data row7 col2" >900</td>
         </tr>
         <tr>
-          <th id="T_87b12_level0_row8" class="row_heading level0 row8" >8</th>
-          <td id="T_87b12_row8_col0" class="data row8 col0" >30</td>
-          <td id="T_87b12_row8_col1" class="data row8 col1" >3</td>
-          <td id="T_87b12_row8_col2" class="data row8 col2" >27000</td>
+          <th id="T_9536f_level0_row8" class="row_heading level0 row8" >8</th>
+          <td id="T_9536f_row8_col0" class="data row8 col0" >30</td>
+          <td id="T_9536f_row8_col1" class="data row8 col1" >3</td>
+          <td id="T_9536f_row8_col2" class="data row8 col2" >27000</td>
         </tr>
       </tbody>
     </table>
@@ -507,12 +499,10 @@ We can plot the result as well with a hex-bin plot.
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
 
-    <AxesSubplot:xlabel='x_1', ylabel='x_2'>
+    <AxesSubplot: xlabel='x_1', ylabel='x_2'>
 
 
 
@@ -551,11 +541,27 @@ you.
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
-      0%|          | 0/9 [00:00<?, ?it/s]    100%|##########| 9/9 [00:00<00:00, 902.26it/s]
+      0%|          | 0/9 [00:00<?, ?it/s]/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    100%|##########| 9/9 [00:00<00:00, 1090.18it/s]
 
 
 
@@ -694,11 +700,13 @@ We can also get the hex-bin plot and styled DataFrame:
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
+    /home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+      return mean(axis=axis, dtype=dtype, out=out, **kwargs)
     <IPython.core.display.HTML object>
+    /home/runner/work/sensitivity/sensitivity/sensitivity/main.py:188: FutureWarning: this method is deprecated in favour of `Styler.to_html()`
+      display(HTML(sens_df.render()))
     <IPython.core.display.HTML object>
 
 
@@ -739,12 +747,32 @@ options for formatting the outputs:
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
-      0%|          | 0/9 [00:00<?, ?it/s]    100%|##########| 9/9 [00:00<00:00, 945.47it/s]
+      0%|          | 0/9 [00:00<?, ?it/s]/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    100%|##########| 9/9 [00:00<00:00, 1105.35it/s]
+    /home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+      return mean(axis=axis, dtype=dtype, out=out, **kwargs)
     <IPython.core.display.HTML object>
+    /home/runner/work/sensitivity/sensitivity/sensitivity/main.py:188: FutureWarning: this method is deprecated in favour of `Styler.to_html()`
+      display(HTML(sens_df.render()))
     <IPython.core.display.HTML object>
 
 
@@ -788,12 +816,72 @@ get multiple pair-wise plots and styled ``DataFrame``\ s:
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
-      0%|          | 0/27 [00:00<?, ?it/s]    100%|##########| 27/27 [00:00<00:00, 903.89it/s]
+      0%|          | 0/27 [00:00<?, ?it/s]/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    /home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+      df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+    100%|##########| 27/27 [00:00<00:00, 1141.04it/s]
+    /home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+      return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+    /home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+      return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+    /home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+      return mean(axis=axis, dtype=dtype, out=out, **kwargs)
     <IPython.core.display.HTML object>
+    /home/runner/work/sensitivity/sensitivity/sensitivity/main.py:188: FutureWarning: this method is deprecated in favour of `Styler.to_html()`
+      display(HTML(sens_df.render()))
     <IPython.core.display.HTML object>
     <IPython.core.display.HTML object>
     <IPython.core.display.HTML object>
@@ -825,12 +913,10 @@ the dictionary are a tuple of the column names involved in the
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
 
-    {('x_1', 'x_2'): <pandas.io.formats.style.Styler object at 0x7fa84a69e0d0>, ('x_1', 'x_3'): <pandas.io.formats.style.Styler object at 0x7fa84aadd430>, ('x_2', 'x_3'): <pandas.io.formats.style.Styler object at 0x7fa84a90ddc0>}
+    {('x_1', 'x_2'): <pandas.io.formats.style.Styler object at 0x7f749e392820>, ('x_1', 'x_3'): <pandas.io.formats.style.Styler object at 0x7f749e330e20>, ('x_2', 'x_3'): <pandas.io.formats.style.Styler object at 0x7f749e34aa00>}
 
 
 
@@ -858,11 +944,17 @@ in the same way you would specify the number formatting string for
 
 .. rst-class:: sphx-glr-script-out
 
- Out:
-
  .. code-block:: none
 
+    /home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+      return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+    /home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+      return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+    /home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use 'frame.mean(axis=0)' or just 'frame.mean()'
+      return mean(axis=axis, dtype=dtype, out=out, **kwargs)
     <IPython.core.display.HTML object>
+    /home/runner/work/sensitivity/sensitivity/sensitivity/main.py:188: FutureWarning: this method is deprecated in favour of `Styler.to_html()`
+      display(HTML(sens_df.render()))
     <IPython.core.display.HTML object>
     <IPython.core.display.HTML object>
     <IPython.core.display.HTML object>
@@ -875,35 +967,30 @@ in the same way you would specify the number formatting string for
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.729 seconds)
+   **Total running time of the script:** ( 0 minutes  1.422 seconds)
 
 
 .. _sphx_glr_download_auto_examples_sensitivity_analysis.py:
 
+.. only:: html
 
-.. only :: html
-
- .. container:: sphx-glr-footer
-    :class: sphx-glr-footer-example
+  .. container:: sphx-glr-footer sphx-glr-footer-example
 
 
-  .. container:: binder-badge
+    .. container:: binder-badge
 
-    .. image:: images/binder_badge_logo.svg
-      :target: https://mybinder.org/v2/gh/nickderobertis/sensitivity/gh-pages?urlpath=lab/tree/notebooks/auto_examples/sensitivity_analysis.ipynb
-      :alt: Launch binder
-      :width: 150 px
+      .. image:: images/binder_badge_logo.svg
+        :target: https://mybinder.org/v2/gh/nickderobertis/sensitivity/gh-pages?urlpath=lab/tree/notebooks/auto_examples/sensitivity_analysis.ipynb
+        :alt: Launch binder
+        :width: 150 px
 
+    .. container:: sphx-glr-download sphx-glr-download-python
 
-  .. container:: sphx-glr-download sphx-glr-download-python
+      :download:`Download Python source code: sensitivity_analysis.py <sensitivity_analysis.py>`
 
-     :download:`Download Python source code: sensitivity_analysis.py <sensitivity_analysis.py>`
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
-
-  .. container:: sphx-glr-download sphx-glr-download-jupyter
-
-     :download:`Download Jupyter notebook: sensitivity_analysis.ipynb <sensitivity_analysis.ipynb>`
+      :download:`Download Jupyter notebook: sensitivity_analysis.ipynb <sensitivity_analysis.ipynb>`
 
 
 .. only:: html

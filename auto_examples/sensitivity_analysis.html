@@ -4,11 +4,11 @@
 <html lang="en" >
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.6 documentation</title>
+  <title>Sensitivity Analysis in Python &mdash; sensitivity 0.2.7 documentation</title>
   
 
   
@@ -26,7 +26,9 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -74,7 +76,7 @@
             
             
               <div class="version">
-                0.2.6
+                0.2.7
               </div>
             
           
@@ -192,7 +194,7 @@
 to download the full example code or to run this example in your browser via Binder</p>
 </div>
 <section class="sphx-glr-example-title" id="sensitivity-analysis-in-python">
-<span id="sphx-glr-auto-examples-sensitivity-analysis-py"></span><h1>Sensitivity Analysis in Python<a class="headerlink" href="#sensitivity-analysis-in-python" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-sensitivity-analysis-py"></span><h1>Sensitivity Analysis in Python<a class="headerlink" href="#sensitivity-analysis-in-python" title="Permalink to this heading">¶</a></h1>
 <p>This guide is organized in the following sections:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="#What-is-Sensitivity-Analysis%3F">Sensitivity Analysis Theory</a></p></li>
@@ -201,7 +203,7 @@ to download the full example code or to run this example in your browser via Bin
 ``sensitivity`</cite>) &lt;#Using-The-Sensitivity-Library&gt;`__</p></li>
 </ul>
 <section id="what-is-sensitivity-analysis">
-<h2>What is Sensitivity Analysis?<a class="headerlink" href="#what-is-sensitivity-analysis" title="Permalink to this headline">¶</a></h2>
+<h2>What is Sensitivity Analysis?<a class="headerlink" href="#what-is-sensitivity-analysis" title="Permalink to this heading">¶</a></h2>
 <p>Sensitivity Analysis is the process of passing different inputs to a
 model to see how the outputs change. It differs from Monte Carlo
 Simulation in that no probability distributions are assigned to the
@@ -234,7 +236,7 @@ set of inputs.</p>
 </ul>
 </section>
 <section id="how-to-do-sensitivity-analysis-in-python">
-<h2>How to Do Sensitivity Analysis in Python?<a class="headerlink" href="#how-to-do-sensitivity-analysis-in-python" title="Permalink to this headline">¶</a></h2>
+<h2>How to Do Sensitivity Analysis in Python?<a class="headerlink" href="#how-to-do-sensitivity-analysis-in-python" title="Permalink to this heading">¶</a></h2>
 <p>Abstract algorithms are great, but let’s see the code that can make this
 happen. First we’ll import pandas to use later and define a function
 which represents the model:</p>
@@ -252,7 +254,6 @@ which represents the model:</p>
 <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>16
 </pre></div>
 </div>
@@ -271,7 +272,6 @@ combination of the inputs.</p>
         <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x1</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">x2</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>10 1
 10 2
 10 3
@@ -290,7 +290,6 @@ combination of the inputs.</p>
         <span class="nb">print</span><span class="p">(</span><a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_i</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>10
 100
 1000
@@ -311,7 +310,6 @@ combination of the inputs.</p>
 <a href="https://docs.python.org/3/library/stdtypes.html#list" title="builtins.list" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">outputs</span></a>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[(10, 1, 10), (10, 2, 100), (10, 3, 1000), (20, 1, 20), (20, 2, 400), (20, 3, 8000), (30, 1, 30), (30, 2, 900), (30, 3, 27000)]
 </pre></div>
 </div>
@@ -412,94 +410,94 @@ values:</p>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
 <style type="text/css">
-#T_87b12_row0_col2, #T_87b12_row1_col2, #T_87b12_row3_col2, #T_87b12_row6_col2 {
+#T_9536f_row0_col2, #T_9536f_row1_col2, #T_9536f_row3_col2, #T_9536f_row6_col2 {
   background-color: #a50026;
   color: #f1f1f1;
 }
-#T_87b12_row2_col2 {
+#T_9536f_row2_col2 {
   background-color: #b71126;
   color: #f1f1f1;
 }
-#T_87b12_row4_col2 {
+#T_9536f_row4_col2 {
   background-color: #ab0626;
   color: #f1f1f1;
 }
-#T_87b12_row5_col2 {
+#T_9536f_row5_col2 {
   background-color: #fcaa5f;
   color: #000000;
 }
-#T_87b12_row7_col2 {
+#T_9536f_row7_col2 {
   background-color: #b50f26;
   color: #f1f1f1;
 }
-#T_87b12_row8_col2 {
+#T_9536f_row8_col2 {
   background-color: #006837;
   color: #f1f1f1;
 }
 </style>
-<table id="T_87b12_">
+<table id="T_9536f">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th class="col_heading level0 col0" >x_1</th>
-      <th class="col_heading level0 col1" >x_2</th>
-      <th class="col_heading level0 col2" >y</th>
+      <th id="T_9536f_level0_col0" class="col_heading level0 col0" >x_1</th>
+      <th id="T_9536f_level0_col1" class="col_heading level0 col1" >x_2</th>
+      <th id="T_9536f_level0_col2" class="col_heading level0 col2" >y</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_87b12_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_87b12_row0_col0" class="data row0 col0" >10</td>
-      <td id="T_87b12_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_87b12_row0_col2" class="data row0 col2" >10</td>
+      <th id="T_9536f_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_9536f_row0_col0" class="data row0 col0" >10</td>
+      <td id="T_9536f_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_9536f_row0_col2" class="data row0 col2" >10</td>
     </tr>
     <tr>
-      <th id="T_87b12_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_87b12_row1_col0" class="data row1 col0" >10</td>
-      <td id="T_87b12_row1_col1" class="data row1 col1" >2</td>
-      <td id="T_87b12_row1_col2" class="data row1 col2" >100</td>
+      <th id="T_9536f_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_9536f_row1_col0" class="data row1 col0" >10</td>
+      <td id="T_9536f_row1_col1" class="data row1 col1" >2</td>
+      <td id="T_9536f_row1_col2" class="data row1 col2" >100</td>
     </tr>
     <tr>
-      <th id="T_87b12_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_87b12_row2_col0" class="data row2 col0" >10</td>
-      <td id="T_87b12_row2_col1" class="data row2 col1" >3</td>
-      <td id="T_87b12_row2_col2" class="data row2 col2" >1000</td>
+      <th id="T_9536f_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_9536f_row2_col0" class="data row2 col0" >10</td>
+      <td id="T_9536f_row2_col1" class="data row2 col1" >3</td>
+      <td id="T_9536f_row2_col2" class="data row2 col2" >1000</td>
     </tr>
     <tr>
-      <th id="T_87b12_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_87b12_row3_col0" class="data row3 col0" >20</td>
-      <td id="T_87b12_row3_col1" class="data row3 col1" >1</td>
-      <td id="T_87b12_row3_col2" class="data row3 col2" >20</td>
+      <th id="T_9536f_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_9536f_row3_col0" class="data row3 col0" >20</td>
+      <td id="T_9536f_row3_col1" class="data row3 col1" >1</td>
+      <td id="T_9536f_row3_col2" class="data row3 col2" >20</td>
     </tr>
     <tr>
-      <th id="T_87b12_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_87b12_row4_col0" class="data row4 col0" >20</td>
-      <td id="T_87b12_row4_col1" class="data row4 col1" >2</td>
-      <td id="T_87b12_row4_col2" class="data row4 col2" >400</td>
+      <th id="T_9536f_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_9536f_row4_col0" class="data row4 col0" >20</td>
+      <td id="T_9536f_row4_col1" class="data row4 col1" >2</td>
+      <td id="T_9536f_row4_col2" class="data row4 col2" >400</td>
     </tr>
     <tr>
-      <th id="T_87b12_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_87b12_row5_col0" class="data row5 col0" >20</td>
-      <td id="T_87b12_row5_col1" class="data row5 col1" >3</td>
-      <td id="T_87b12_row5_col2" class="data row5 col2" >8000</td>
+      <th id="T_9536f_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_9536f_row5_col0" class="data row5 col0" >20</td>
+      <td id="T_9536f_row5_col1" class="data row5 col1" >3</td>
+      <td id="T_9536f_row5_col2" class="data row5 col2" >8000</td>
     </tr>
     <tr>
-      <th id="T_87b12_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_87b12_row6_col0" class="data row6 col0" >30</td>
-      <td id="T_87b12_row6_col1" class="data row6 col1" >1</td>
-      <td id="T_87b12_row6_col2" class="data row6 col2" >30</td>
+      <th id="T_9536f_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_9536f_row6_col0" class="data row6 col0" >30</td>
+      <td id="T_9536f_row6_col1" class="data row6 col1" >1</td>
+      <td id="T_9536f_row6_col2" class="data row6 col2" >30</td>
     </tr>
     <tr>
-      <th id="T_87b12_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_87b12_row7_col0" class="data row7 col0" >30</td>
-      <td id="T_87b12_row7_col1" class="data row7 col1" >2</td>
-      <td id="T_87b12_row7_col2" class="data row7 col2" >900</td>
+      <th id="T_9536f_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_9536f_row7_col0" class="data row7 col0" >30</td>
+      <td id="T_9536f_row7_col1" class="data row7 col1" >2</td>
+      <td id="T_9536f_row7_col2" class="data row7 col2" >900</td>
     </tr>
     <tr>
-      <th id="T_87b12_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_87b12_row8_col0" class="data row8 col0" >30</td>
-      <td id="T_87b12_row8_col1" class="data row8 col1" >3</td>
-      <td id="T_87b12_row8_col2" class="data row8 col2" >27000</td>
+      <th id="T_9536f_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_9536f_row8_col0" class="data row8 col0" >30</td>
+      <td id="T_9536f_row8_col1" class="data row8 col1" >3</td>
+      <td id="T_9536f_row8_col2" class="data row8 col2" >27000</td>
     </tr>
   </tbody>
 </table>
@@ -507,16 +505,15 @@ values:</p>
 </div>
 <br />
 <br /><p>We can plot the result as well with a hex-bin plot.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="o">=</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="o">.</span><span class="n">hexbin</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y</span></a><span class="o">=</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">gridsize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_sensitivity_analysis_001.png" srcset="../_images/sphx_glr_sensitivity_analysis_001.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;x_1&#39;, ylabel=&#39;x_2&#39;&gt;
+<img src="../_images/sphx_glr_sensitivity_analysis_001.png" srcset="../_images/sphx_glr_sensitivity_analysis_001.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;x_1&#39;, ylabel=&#39;x_2&#39;&gt;
 </pre></div>
 </div>
 </section>
 <section id="using-the-sensitivity-library">
-<h2>Using The Sensitivity Library<a class="headerlink" href="#using-the-sensitivity-library" title="Permalink to this headline">¶</a></h2>
+<h2>Using The Sensitivity Library<a class="headerlink" href="#using-the-sensitivity-library" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">sensitivity</span></code> package is designed around making this whole process
 easier. It is also able to handle more than two varying inputs with
 ease. The basic usage is to construct a dictionary where the keys are
@@ -534,9 +531,26 @@ you.</p>
 <span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <span class="n">my_model</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/9 [00:00&lt;?, ?it/s]
-100%|##########| 9/9 [00:00&lt;00:00, 902.26it/s]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/9 [00:00&lt;?, ?it/s]/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+
+100%|##########| 9/9 [00:00&lt;00:00, 1090.18it/s]
 </pre></div>
 </div>
 <p>Now that we have created the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> object, it has
@@ -630,13 +644,16 @@ results at <code class="docutils literal notranslate"><span class="pre">.df</spa
 </div>
 <br />
 <br /><p>We can also get the hex-bin plot and styled DataFrame:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
 <span class="n">styled</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_sensitivity_analysis_002.png" srcset="../_images/sphx_glr_sensitivity_analysis_002.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+<img src="../_images/sphx_glr_sensitivity_analysis_002.png" srcset="../_images/sphx_glr_sensitivity_analysis_002.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use &#39;frame.mean(axis=0)&#39; or just &#39;frame.mean()&#39;
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+&lt;IPython.core.display.HTML object&gt;
+/home/runner/work/sensitivity/sensitivity/sensitivity/main.py:188: FutureWarning: this method is deprecated in favour of `Styler.to_html()`
+  display(HTML(sens_df.render()))
 &lt;IPython.core.display.HTML object&gt;
 </pre></div>
 </div>
@@ -650,15 +667,36 @@ options for formatting the outputs:</p>
 <span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span>
     <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <span class="n">my_model</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">reverse_colors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_map</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">labels</span></a><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">labels</span></a>
 <span class="p">)</span>
-<a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
 <span class="n">styled</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_sensitivity_analysis_003.png" srcset="../_images/sphx_glr_sensitivity_analysis_003.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/9 [00:00&lt;?, ?it/s]
-100%|##########| 9/9 [00:00&lt;00:00, 945.47it/s]
+<img src="../_images/sphx_glr_sensitivity_analysis_003.png" srcset="../_images/sphx_glr_sensitivity_analysis_003.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/9 [00:00&lt;?, ?it/s]/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+
+100%|##########| 9/9 [00:00&lt;00:00, 1105.35it/s]
+/home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use &#39;frame.mean(axis=0)&#39; or just &#39;frame.mean()&#39;
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)
 &lt;IPython.core.display.HTML object&gt;
+/home/runner/work/sensitivity/sensitivity/sensitivity/main.py:188: FutureWarning: this method is deprecated in favour of `Styler.to_html()`
+  display(HTML(sens_df.render()))
 &lt;IPython.core.display.HTML object&gt;
 </pre></div>
 </div>
@@ -675,15 +713,76 @@ get multiple pair-wise plots and styled <code class="docutils literal notranslat
 
 <span class="n">sa</span> <span class="o">=</span> <span class="n">SensitivityAnalyzer</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">sensitivity_dict</span></a><span class="p">,</span> <span class="n">my_model_2</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
-<a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">plot</span></a><span class="p">()</span>
 
 <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_sensitivity_analysis_004.png" srcset="../_images/sphx_glr_sensitivity_analysis_004.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/27 [00:00&lt;?, ?it/s]
-100%|##########| 27/27 [00:00&lt;00:00, 903.89it/s]
+<img src="../_images/sphx_glr_sensitivity_analysis_004.png" srcset="../_images/sphx_glr_sensitivity_analysis_004.png" alt="sensitivity analysis" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/27 [00:00&lt;?, ?it/s]/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+/home/runner/work/sensitivity/sensitivity/sensitivity/df.py:44: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+
+100%|##########| 27/27 [00:00&lt;00:00, 1141.04it/s]
+/home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use &#39;frame.mean(axis=0)&#39; or just &#39;frame.mean()&#39;
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+/home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use &#39;frame.mean(axis=0)&#39; or just &#39;frame.mean()&#39;
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+/home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use &#39;frame.mean(axis=0)&#39; or just &#39;frame.mean()&#39;
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)
 &lt;IPython.core.display.HTML object&gt;
+/home/runner/work/sensitivity/sensitivity/sensitivity/main.py:188: FutureWarning: this method is deprecated in favour of `Styler.to_html()`
+  display(HTML(sens_df.render()))
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
@@ -698,12 +797,11 @@ the dictionary are a tuple of the column names involved in the
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">styled_dict</span></a>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fa84a69e0d0&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fa84aadd430&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7fa84a90ddc0&gt;}
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>{(&#39;x_1&#39;, &#39;x_2&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f749e392820&gt;, (&#39;x_1&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f749e330e20&gt;, (&#39;x_2&#39;, &#39;x_3&#39;): &lt;pandas.io.formats.style.Styler object at 0x7f749e34aa00&gt;}
 </pre></div>
 </div>
 <section id="adding-additional-styling-to-styled-dataframes">
-<h3>Adding Additional Styling to Styled <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code><a class="headerlink" href="#adding-additional-styling-to-styled-dataframes" title="Permalink to this headline">¶</a></h3>
+<h3>Adding Additional Styling to Styled <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code><a class="headerlink" href="#adding-additional-styling-to-styled-dataframes" title="Permalink to this heading">¶</a></h3>
 <p>It could be desired to pass some number or other formatting to the
 styled <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>. This can be done with the <code class="docutils literal notranslate"><span class="pre">num_fmt</span></code> argument,
 either when first creating the <code class="docutils literal notranslate"><span class="pre">SensitivityAnalyzer</span></code> or when calling
@@ -713,8 +811,15 @@ in the same way you would specify the number formatting string for
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">styled_dict</span></a> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">styled_dfs</span><span class="p">(</span><span class="n">num_fmt</span><span class="o">=</span><span class="s1">&#39;$</span><span class="si">{:,.0f}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.HTML object&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use &#39;frame.mean(axis=0)&#39; or just &#39;frame.mean()&#39;
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+/home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use &#39;frame.mean(axis=0)&#39; or just &#39;frame.mean()&#39;
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+/home/runner/.local/share/virtualenvs/sensitivity-9r0peeHQ/lib/python3.8/site-packages/numpy/core/fromnumeric.py:3430: FutureWarning: In a future version, DataFrame.mean(axis=None) will return a scalar mean over the entire DataFrame. To retain the old behavior, use &#39;frame.mean(axis=0)&#39; or just &#39;frame.mean()&#39;
+  return mean(axis=axis, dtype=dtype, out=out, **kwargs)
+&lt;IPython.core.display.HTML object&gt;
+/home/runner/work/sensitivity/sensitivity/sensitivity/main.py:188: FutureWarning: this method is deprecated in favour of `Styler.to_html()`
+  display(HTML(sens_df.render()))
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
 &lt;IPython.core.display.HTML object&gt;
@@ -722,8 +827,8 @@ in the same way you would specify the number formatting string for
 &lt;IPython.core.display.HTML object&gt;
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.729 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sensitivity-analysis-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.422 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-sensitivity-analysis-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/nickderobertis/sensitivity/gh-pages?urlpath=lab/tree/notebooks/auto_examples/sensitivity_analysis.ipynb"><img alt="Launch binder" src="../_images/binder_badge_logo.svg" width="150px" /></a>
 </div>
@@ -760,7 +865,7 @@ in the same way you would specify the number formatting string for
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2021, Nick DeRobertis
+        &copy; Copyright 2022, Nick DeRobertis
 
     </p>
   </div>
