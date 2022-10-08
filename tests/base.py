@@ -78,7 +78,7 @@ def assert_styled_matches(styler: Styler, file_path: str = DF_STYLED_PATH, gener
 
 
 def _prettify_html(html: str) -> str:
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, "html.parser")
     return soup.prettify()
 
 
