@@ -41,7 +41,7 @@ def sensitivity_df(sensitivity_values: Dict[str, Any], func: Callable,
         param_dict.update(func_kwargs)
         result = func(**param_dict)
         base_param_dict.update({result_name: result})
-        df = df.append(pd.DataFrame(pd.Series(base_param_dict)).T)
+        df = pd.concat([df,pd.DataFrame(pd.Series(base_param_dict)).T])
     df.reset_index(drop=True, inplace=True)
     df = df.convert_dtypes()
     if labels:
