@@ -66,7 +66,7 @@ def add_10_to_values(value1, value2, value3=5):
 
 
 def assert_styled_matches(styler: Styler, file_path: str = DF_STYLED_PATH, generate: bool = False):
-    compare_html = styler.set_uuid(DF_STYLE_UUID).render()
+    compare_html = styler.set_uuid(DF_STYLE_UUID).to_html()
 
     if generate:
         Path(file_path).write_text(_prettify_html(compare_html))

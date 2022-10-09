@@ -185,7 +185,7 @@ class SensitivityAnalyzer:
                 var_str = ' vs. '.join(var_tup)
                 title_str = f'{self.result_name} by {var_str}'
                 _display_header(title_str)
-                display(HTML(sens_df.render()))
+                display(HTML(sens_df.to_html()))
 
         if len(output) == 1:
             return list(output.values())[0]  # get Styler object out of dictionary
